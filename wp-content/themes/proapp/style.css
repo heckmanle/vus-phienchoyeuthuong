@@ -291,4 +291,7 @@ input.checkbox-status:checked + .checkbox-slider:after{
     background-color: #1352BC;
     border: 1px solid #1352BC;
 }
+.app-header {
+    background: #ba141a !important;
+}
 
