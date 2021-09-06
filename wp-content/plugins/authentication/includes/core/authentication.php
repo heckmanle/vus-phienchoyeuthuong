@@ -228,7 +228,7 @@ class Authentication
 		unset($_SESSION['username']);
 		unset($_SESSION['username_type']);
 		unset($_SESSION['password']);
-		$url = apply_filters('app/authentication/login_success_url', home_url());
+		$url = apply_filters('app/authentication/login_success_url', home_url('/thong-tin-ho-tro'));
 		return ['_wp_http_referer' => $url];
 	}
 
