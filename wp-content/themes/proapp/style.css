@@ -302,5 +302,8 @@ input.checkbox-status:checked + .checkbox-slider:after{
     left: 0;
     bottom: 0;
 }
+.home .et_pb_widget_area {
+    width: 100%;
+}
 
 
