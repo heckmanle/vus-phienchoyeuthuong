@@ -21,6 +21,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 //if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
+                <img src="images/footer.svg">
+
         </div>
 
 	</div> <!-- #page-container -->
