@@ -21,7 +21,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 //if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
-                <img src="<?php echo THEME_URL; ?>/images/footer.svg" width="100%">
+                <img class="svgimage" src="<?php echo THEME_URL; ?>/images/footer.svg" width="100%">
 
         </div>
 

@@ -297,5 +297,10 @@ input.checkbox-status:checked + .checkbox-slider:after{
 .app-theme-white.fixed-header .app-header__logo {background: unset !important;}
 .app-header-right p, .app-header-right p a {color:#fff !important;font-size: 18px;
     padding-top: 20px;}
+.svgimage  {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
 
 
