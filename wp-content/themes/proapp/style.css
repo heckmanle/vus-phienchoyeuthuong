@@ -294,4 +294,6 @@ input.checkbox-status:checked + .checkbox-slider:after{
 .app-header {
     background: #ba141a !important;
 }
+.app-theme-white.fixed-header .app-header__logo {background: unset !important;}
+
 
