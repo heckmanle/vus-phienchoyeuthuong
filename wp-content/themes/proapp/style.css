@@ -295,6 +295,7 @@ input.checkbox-status:checked + .checkbox-slider:after{
     background: #ba141a !important;
 }
 .app-theme-white.fixed-header .app-header__logo {background: unset !important;}
-.app-header-right p, .app-header-right p a {color:#fff !important;}
+.app-header-right p, .app-header-right p a {color:#fff !important;font-size: 18px;
+    padding-top: 20px;}
 
 
