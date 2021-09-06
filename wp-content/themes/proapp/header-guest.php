@@ -104,7 +104,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
 </div>
 <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
 
-    <div class="app-header header-shadow">
+    <div class="app-header ">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -143,6 +143,6 @@ if ( ! defined( 'WPINC' ) ) { die; }
                 </div>
             </div>
         </div>
-    </div>
+    </div class="app-header ">
     <div class="mainsite-area">
 <?php get_template_part( 'template-builder', 'page' ); ?>
