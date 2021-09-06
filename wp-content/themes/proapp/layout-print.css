@@ -1,0 +1,71 @@
+
+body{
+    color: #000;
+    background-color: #FFFFFF;
+    font-size: 13px;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+    color: #000000;
+}
+h1.title{
+    color: #002261;
+    font-weight: 700;
+    font-size: 25px;
+}
+.print-signature h3, .print-signature h4 {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input.form-control{
+    border: none;
+    border-bottom: 1px dotted #000000;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+label.print-label-input{
+    margin-bottom: 0;
+    line-height: 1;
+    min-width: 130px;
+}
+table{
+    border: none !important;
+    border-spacing: 0;
+}
+.table-print td, .table-print th{
+    border: 0 !important;
+    position: relative;
+    padding: 5px;
+}
+.table-print td:before,
+.table-print th:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: -2px;
+    top: 0;
+    bottom: 0;
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+.table-print tbody tr:last-child td:before{
+    border-bottom: 1px solid #000000;
+}
+.table-print tbody tr td:last-child:before,
+.table-print thead tr th:last-child:before{
+    border-right: 1px solid #000000;
+    right: 0;
+}
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+    @page {
+        margin: 0;
+    }
+    table { page-break-inside: auto; }
+}

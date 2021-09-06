@@ -1,0 +1,340 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+.ppb-layout-product-create .btn-pro-create, #pbb-btn-pro-action-save{
+	border-radius: 2px;
+	padding: 3px 21px;
+	color: #000;
+	font-weight: bold;
+	font-size: 13px;
+	display: flex;
+	align-items: center;
+}
+.pbb-h-100{
+	height: 100% !important;
+}
+#pbb-btn-pro-action-save{
+	padding: 2px 5px;
+	background: linear-gradient(to left, #A80061, #FF001C) !important;
+	color: #fff;
+	margin-right: 10px;
+	margin-top: 3px;
+	border-radius: 60px;
+	-moz-border-radius: 60px;
+	-webkit-border-radius: 60px;
+	-ms-border-radius: 60px;
+}
+.ppb-layout-product-create a:hover{
+	text-decoration: none;
+}
+.overflow-hidden{
+	overflow: hidden;
+}
+.blockUI.blockOverlay, .blockUI.blockMsg.blockElement{
+	position: fixed !important;
+	z-index: 99999 !important;
+}
+.blockUI.blockMsg.blockElement{
+	top: 50% !important;
+	width: 0 !important;
+	height: 0 !important;
+	border: 0 !important;
+	background: transparent !important;
+}
+.pbb-form-product .blockUI.blockOverlay, .pbb-form-product .blockUI.blockMsg.blockElement,
+#pbb-product-tabs-content .blockUI.blockOverlay, #pbb-product-tabs-content .blockUI.blockMsg.blockElement{
+	position: absolute !important;
+}
+.pbb-form-product .blockUI.blockOverlay,
+#pbb-product-tabs-content .blockUI.blockOverlay{
+	background: transparent !important;
+}
+#toast-container.toast-bottom-center > div, #toast-container.toast-top-center > div{
+	width: 320px;
+}
+.form-group.w-100 .select2-container{
+	width: 100% !important;
+}
+.select2-selection--multiple {
+	padding-right: 30px !important;
+}
+
+.select2-selection--multiple:after {
+	content: "";
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-top: 5px solid #333;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+}
+.lbl-pro-title, .input-pro-title{
+	font-weight: 300;
+	font-size: 36px;
+	color: #4F4F4F;
+	line-height: 1;
+}
+.lbl-pro-title{
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 1.5;
+}
+.pbb-edit-pro-title{
+	color: #141414;
+	display: flex;
+}
+.pbb-pro-price{
+	color: #FC5431 !important;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 21px;
+	text-align: right;
+}
+.pbb-pro-gallery-item{
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	border: 1px solid #CCC;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.pbb-js-pro-gallery-add{
+	border-color: #F2F2F2;
+	background: #E8E8E8;
+	cursor: pointer;
+}
+.ppb-layout-product-create .material-form-control{
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #123777;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	padding-left: 5px;
+	padding-right: 5px;
+	height: 40px;
+}
+
+.material-form-control:focus ~ .focus-border {
+	width: 100%;
+	transition: .4s;
+	left: 0;
+}
+.material-form-control ~ .focus-border {
+	position: absolute;
+	top: 45px;
+	left: 50%;
+	width: 0;
+	height: 1px;
+	background-color: #828282;
+	transition: .4s;
+}
+form .form-group input[type="text"].input-pro-title {
+	border: none !important;
+	width: 100%;
+	background: #f8f8f8;
+}
+.ppb-layout-product-create .error{
+	font-size: 14px;
+	color: red;
+}
+
+.ppb-layout-product-create .pbb-back{
+	font-size: 18px;
+	color: #797979;
+}
+.ppb-layout-product-create .material-form-control:hover, .ppb-layout-product-create .material-form-control:focus{
+	box-shadow: none;
+}
+.ppb-layout-product-create .material-form-control.error{
+	border: none;
+	border-bottom: 1px solid #c60b0b;
+}
+.js-pro-gallery-item-remove{
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #FFF;
+}
+.lds-ring {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+.lds-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	margin: 8px;
+	border: 8px solid #fff;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+	animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+	animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+	animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.pbb-form-product .lds-ring div,
+#pbb-product-tabs-content .lds-ring div{
+	border-color: #000 transparent transparent transparent;
+}
+#pbb-product-tabs{
+	justify-content: center;
+}
+#pbb-product-tabs li{
+	width: 40%;
+	text-align: center;
+}
+.nav-tabs .nav-link{
+	padding: 15px 0;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+
+}
+.pbb-product-item{
+	padding: 15px 8px;
+	margin-top: 6px;
+	cursor: pointer;
+	border: none;
+	width: 96%;
+	background: #dddddd1f;
+	margin-left: 2px;
+}
+.pbb-product-item:hover{
+	background: #FFFFFF;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+}
+.pbb-product-item .pbb-pro-left{
+	max-width: 80px;
+}
+.pbb-pro-image img{
+	border-radius: 6px;
+}
+.pbb-product-item .pbb-pro-right{}
+.pbb-product-item .pbb-pro-right .pbb-pro-title{
+	font-size: 16px;
+	font-weight: 600;
+	padding: 0;
+	margin-bottom: 2px;
+}
+.pbb-pro-property .pbb-pro-status{
+	color: #069A2F;
+	font-weight: bold;
+}
+.pbb-pro-property{
+	font-size: 12px;
+}
+.pbb-pro-property .pbb-pro-status.pbb-pro-status-draft{
+	color: #FF2015;
+}
+.alert_aligncenter {
+	position: absolute;
+	top: 50%;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+}
+.pbb-pro-property .pbb-pro-date{
+	color: rgba(60, 60, 67, 0.6);
+}
+.pbb-section-pagination ul.pagination{
+	justify-content: center;
+	margin-top: 20px;
+}
+.pbb-section-pagination ul.pagination li:not(:last-child){
+	margin-right: 10px;
+}
+.pbb-section-pagination ul.pagination .page-numbers{
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	border-radius: 50%;
+	align-items: center;
+	color: #25232B;
+	font-weight: 600;
+	font-size: 13px;
+}
+.pbb-section-pagination ul.pagination .page-numbers.current{
+	background: #FFF;
+	border: 1px solid #888;
+}
+.pbb-myposts-content{
+	height: calc(100vh - 282px);
+}
+.simplebar-track.simplebar-vertical{
+	background: #FAFAFA;
+	border-radius: 10px;
+}
+.simplebar-scrollbar::before{
+	background: #E3E3E3;
+}
+.simplebar-scrollbar.simplebar-visible:before{
+	opacity: 1 !important;
+}
+.pbb-form-product{
+	min-height: 500px;
+}
+.pbb-drag-drop-layout{
+	padding: 10px 15px;
+	padding-bottom: 3rem;
+	border: 1px solid #F2F2F2;
+	border-radius: 4px;
+	color: #333;
+	background: #e8e8e852;
+}
+.pbb-drag-drop-layout >  div {
+	width: 200px;
+	margin: 0 auto;
+	padding-top: 6%;
+}
+#pbb-pro-detail-content{
+	height: calc(100vh - 90px);
+}
+.pbb-pro-detail{
+	padding-bottom: 40px;
+}
+.form-group-product-status .select2-container--default .select2-selection--single{
+	border: 0;
+}
+.ppb-layout-product-create .col-md-3 { background: #f9f9f96e; padding-top: 30px; height: 100vh; }
+.ppb-layout-product-create .col-md-9 .col-md-9 { padding-top: 30px; }
+.pbb-pro-detail .col-md-9 {flex: 70%;max-width: 70%;}
+.pbb-pro-detail .col-md-3 {flex: 30%; max-width: 70%;}
+.pe-7s-angle-left, .pe-7s-angle-right.simplebar-scrollbar::before {font-size: 33px;}
+#modal-confirm-delete-page .modal-body{
+	padding-top: 0;
+	padding-bottom: 0;
+}

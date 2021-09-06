@@ -1,0 +1,19 @@
+.login-box i.fa-eye {
+    position: absolute;
+    right: 5px;
+    bottom: 1px;
+    z-index: 999;
+    background: #fff;
+    padding: 10px;
+}
+.login-box input.form-control[type="password"], .login-box input.form-control[type="text"] {
+    border: none !important;
+    border-bottom: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    padding: 0;
+    background: none;
+    box-shadow: none !important;
+}
+.txtForgot {
+    text-align: center;
+}

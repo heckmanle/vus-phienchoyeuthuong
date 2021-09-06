@@ -1,0 +1,35 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+.dropzone1{
+    border-radius: 100px;
+    width: 79px;
+    height: 79px;
+    text-align: center;
+    background-color: #e0f3ff;
+    position: absolute;
+    left: 130px;
+    top: 0;
+    bottom: 0;
+}
+.img-upload{
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100px;
+    width: inherit;
+}
+#ui-datepicker-div{
+    z-index: 9999999999 !important;
+}
+.custome_type {
+    width: 440px !important;
+    margin: 0 auto !important;
+    max-width: 440px !important;
+    padding-bottom: 15px;
+}
+.custome_type > .position-relative {
+    width:130px;
+    float:left;
+}
