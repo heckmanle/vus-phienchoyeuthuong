@@ -21,11 +21,12 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 //if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
-                <img class="svgimage" src="<?php echo THEME_URL; ?>/images/footer.svg" width="100%">
 
         </div>
 
 	</div> <!-- #page-container -->
+    <footer style="background: url('<?php echo THEME_URL; ?>/images/footer.svg');">
+    </footer>
 
 
 	<?php wp_footer(); ?>
