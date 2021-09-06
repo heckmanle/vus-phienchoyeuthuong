@@ -81,7 +81,7 @@ $table_prefix = 'se_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', true );
+define( 'WP_DEBUG', false );
 define('ALLOW_UNFILTERED_UPLOADS', true);
 define('API_URL', 'http://103.57.221.135:8080/graphql');
 
