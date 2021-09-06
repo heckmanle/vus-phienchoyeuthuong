@@ -83,7 +83,7 @@ $table_prefix = 'se_';
  */
 define( 'WP_DEBUG', true );
 define('ALLOW_UNFILTERED_UPLOADS', true);
-define('API_URL', 'http://103.57.221.135:3000/graphql');
+define('API_URL', 'http://103.57.221.135:8080/graphql');
 
 /* That's all, stop editing! Happy publishing. */
 
