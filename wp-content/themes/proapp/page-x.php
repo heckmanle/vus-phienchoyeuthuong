@@ -3,7 +3,10 @@
 /**
  * Template Name: Thông tin hỗ trợ
  */
-
+if( !\DIVI\Includes\Core\User::get_current() ){
+    wp_redirect(site_url());
+    die;
+}
 $products = \DIVI\Includes\Core\Product::products();
 if( is_wp_error($products) ){
     $products = [];
