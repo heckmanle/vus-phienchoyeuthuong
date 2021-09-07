@@ -11,7 +11,7 @@ class Dashboard
     public function __construct()
     {
         add_action('init', [$this, 'init']);
-        add_filter('app/authentication/login_success_url', [$this, 'login_success_url']);
+        //add_filter('app/authentication/login_success_url', [$this, 'login_success_url']);
         $this->hook_page_template();
     }
 

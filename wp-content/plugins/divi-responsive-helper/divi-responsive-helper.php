@@ -31,6 +31,7 @@ define('PAC_DRH_VERSION', '2.0.4');
 define('PAC_DRH_PATH', untrailingslashit(plugin_dir_path(__FILE__)));
 define('PAC_DRH_URL', untrailingslashit(plugin_dir_url(__FILE__)));
 if ( ! function_exists('get_plugins')) {
+    require_once ABSPATH.'wp-admin/includes/plugin.php';
 }
 if (file_exists(PAC_DRH_PATH.'/includes/helpers/helpers.php')) {
     require_once(PAC_DRH_PATH.'/includes/helpers/helpers.php');

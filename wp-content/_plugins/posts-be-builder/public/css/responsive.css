@@ -1,8 +1,0 @@
-@media screen and (max-width: 768px) {
-	.prod-reviews, .prod-save{
-		display: block;
-	}
-	.postsbb-for-categories .product-thumbnail{
-		height: auto;
-	}
-}
