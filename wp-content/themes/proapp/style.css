@@ -325,6 +325,10 @@ table.table-style-main tr td:nth-child(odd){
 .table-res-style-main tbody td:nth-child(2) {
     text-align:left !important;
 }
+.table-res-style-main tbody td {
+    color: #000;
+    font-size: 16px;
+}
 
 @media screen and (max-width: 768px) {
 
