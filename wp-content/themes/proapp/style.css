@@ -457,4 +457,12 @@ table.table-style-main thead tr th:last-child{
         right: 0;
         position: fixed;
     }
+    .mobile-toggle-header-nav .fa-bars {display: none;}
+    .logo {
+        width: 200px;
+        margin: 0 auto;
+    }
+    .page-template-page-x .et-boc .et_pb_column_1_2 {
+        width: 100% !important;
+    }
 }
