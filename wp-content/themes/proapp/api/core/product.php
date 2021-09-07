@@ -48,6 +48,8 @@ class Product
 			'product_properties',
 			'address',
 			'product_number',
+			'product_seo_keywords',
+			'product_seo_description',
 			'product_pay',
 			'product_status',
 			'product_gallery',

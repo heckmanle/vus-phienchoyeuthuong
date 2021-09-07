@@ -360,6 +360,20 @@ class User
 		return $response[$func];
 	}
 
+	public static function update_user($user_id, $data){
+		global $system_api;
+		$data['id'] = $user_id;
+		$response = $system_api->re_query('POST', "updateUser", [
+			'params' => $data,
+			'fields' => self::$field_default,
+		], true);
+		if( is_wp_error($response) ){
+			$response = self::convert_message_error($response);
+			return $response;
+		}
+		return $response['updateUser'];
+	}
+
 	public static function delete_user($user_id){
 		global $system_api;
 		$response = $system_api->re_query('POST', 'deleteUser', [
