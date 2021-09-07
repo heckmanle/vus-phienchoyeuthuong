@@ -3,7 +3,8 @@
 /**
  * Template Name: Thông tin hỗ trợ
  */
-if( !\DIVI\Includes\Core\User::get_current() ){
+$currentUser = \DIVI\Includes\Core\User::get_current();
+if( !$currentUser || is_wp_error($currentUser) ){
     wp_redirect(site_url());
     die;
 }
