@@ -7,11 +7,12 @@ if( isset($_REQUEST['action']) && 'logout' === $_REQUEST['action'] ){
 }
 $currentUser = User::get_current();
 
-var_dump($currentUser);
+
 //global $wp;
 //$current_request = $wp->request;
 
-if( !empty($currentUser)){
+if( !empty($currentUser) && $currentUser->email != ""){
+    var_dump($currentUser);
     wp_redirect(home_url('/thong-tin-ho-tro'));
     exit;
 }
