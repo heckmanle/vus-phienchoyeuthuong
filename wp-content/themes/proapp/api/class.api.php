@@ -86,8 +86,8 @@ class API {
             $this->get_token_cookie();
             $args['headers']['Authorization'] = $this->token;
         }
-        $args['body'] = "{\"query\":\"{$type}{{$func}{$params}{$fields}}\"}";dump($args['body']);
-        $response = wp_remote_post($this->url, $args);dump($response);
+        $args['body'] = "{\"query\":\"{$type}{{$func}{$params}{$fields}}\"}";
+        $response = wp_remote_post($this->url, $args);
         if(is_wp_error($response)){
             $message = $response->get_error_message();
             if( preg_match('/(cURL error)/', $message) ){
