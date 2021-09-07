@@ -449,4 +449,12 @@ table.table-style-main thead tr th:last-child{
 
 @media only screen and (max-width: 768px) {
     .home .login_text_code .et_pb_widget_area_left {width:100% !important;}
+    .app-login-box {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        width: 320px;
+        left: 0;
+        right: 0;
+        position: fixed;
+    }
 }
