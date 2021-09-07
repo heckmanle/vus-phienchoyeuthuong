@@ -14,7 +14,7 @@ $currentUser = User::get_current();
 if( !empty($currentUser) || $currentUser->email != ""){
     var_dump($currentUser);
     //wp_redirect(home_url('/thong-tin-ho-tro'));
-    wp_redirect( home_url('/thong-tin-ho-tro'), '302' );
+    wp_redirect( '/thong-tin-ho-tro', '302' );
     //exit;
 }
 
