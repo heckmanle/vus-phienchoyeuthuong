@@ -1,0 +1,230 @@
+.pac_drh_desktop_col_three .et_pb_gallery_items,
+.pac_drh_desktop_col_two .et_pb_gallery_items,
+.pac_drh_desktop_col_one .et_pb_gallery_items,
+.pac_drh_tab_col_four .et_pb_gallery_items,
+.pac_drh_tab_col_two .et_pb_gallery_items,
+.pac_drh_tab_col_one .et_pb_gallery_items,
+.pac_drh_ph_col_four .et_pb_gallery_items,
+.pac_drh_ph_col_three .et_pb_gallery_items,
+.pac_drh_ph_col_two .et_pb_gallery_items,
+.pac_drh_ph_col_one .et_pb_gallery_items {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.pac_drh_desktop_col_three .et_pb_gallery_item,
+.pac_drh_desktop_col_two .et_pb_gallery_item,
+.pac_drh_desktop_col_one .et_pb_gallery_item,
+.pac_drh_tab_col_four .et_pb_gallery_item,
+.pac_drh_tab_col_two .et_pb_gallery_item,
+.pac_drh_tab_col_one .et_pb_gallery_item,
+.pac_drh_ph_col_four .et_pb_gallery_item,
+.pac_drh_ph_col_three .et_pb_gallery_item,
+.pac_drh_ph_col_two .et_pb_gallery_item,
+.pac_drh_ph_col_one .et_pb_gallery_item {
+    min-width: 10%;
+}
+
+@media (min-width: 980px) {
+    /* CSS for Desktop */
+    /* 4 col is default for desktop */
+    /* 3 col */
+    .pac_drh_desktop_col_three .et_pb_gallery_item {
+        flex-basis: 25.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_desktop_col_three .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 25.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_desktop_3_col_last_r_1_element_fix .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 46.1% !important;
+        flex-grow: 4 !important;
+    }
+
+    /* 2 col*/
+    .pac_drh_desktop_col_two .et_pb_gallery_item {
+        flex-basis: 34% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_desktop_col_two .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 34% !important;
+        flex-grow: 1 !important;
+    }
+
+    /* one col */
+    .pac_drh_desktop_col_one .et_pb_gallery_item {
+        flex-basis: 50.1% !important;
+        flex-grow: 1 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 980px) {
+    /* col 4 */
+    .pac_drh_tab_col_four .et_pb_gallery_item {
+        flex-basis: 20.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_tab_col_four .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 20.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_tab_4_col_last_r_2_element_fix .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 46.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_tab_4_col_last_r_1_element_fix .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 70.1% !important;
+        flex-grow: 4 !important;
+    }
+
+    /* 3 col is default for tablet */
+    /* col 2 */
+    .pac_drh_tab_col_two .et_pb_gallery_item {
+        flex-basis: 34.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_tab_col_two .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 34.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    /* col 1 */
+    .pac_drh_tab_col_one .et_pb_gallery_item {
+        flex-basis: 50.1% !important;
+        flex-grow: 1 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .pac_drh_tab_col_one .et_pb_gallery_item img {
+        width: 100%;
+    }
+
+    /* adding margin for gutter values */
+    .pac_drh_tab_col_four .et_pb_gallery_item:not(:nth-child(4n)),
+    .pac_drh_tab_col_two .et_pb_gallery_item:not(:nth-child(2n)) {
+        margin-right: 5.5%;
+    }
+
+    .pac_drh_tab_col_four .et_pb_gallery_item:nth-child(4n),
+    .pac_drh_tab_col_two .et_pb_gallery_item:nth-child(2n) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 0px) {
+    /* col 4 */
+    .pac_drh_ph_col_four .et_pb_gallery_item {
+        flex-basis: 20.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_ph_col_four .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 20.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_ph_4_col_last_r_1_element_fix .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 73.1% !important;
+        flex-grow: 4 !important;
+    }
+
+    .pac_drh_ph_4_col_last_r_2_element_fix .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 48.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    /* col 3 */
+    .pac_drh_ph_col_three .et_pb_gallery_item {
+        flex-basis: 25.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_ph_col_three .et_pb_gallery_item:nth-child(3n) {
+        margin-right: 0 !important;
+    }
+
+    .pac_drh_ph_col_three .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 25.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_ph_3_col_last_r_1_element_fix .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 62.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    /* adding margin for gutter values -- Divi Add 5.5% margin right for all gutter values*/
+    .pac_drh_ph_col_four .et_pb_gallery_item:not(:nth-child(4n)),
+    .pac_drh_ph_col_three .et_pb_gallery_item:not(:nth-child(3n)) {
+        margin-right: 5.5%;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 480px) {
+    /* 2 col is default for mobile 480-767*/
+    /* col 1 */
+    .pac_drh_ph_col_one .et_pb_gallery_item {
+        flex-basis: 50.1% !important;
+        flex-grow: 1 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .pac_drh_ph_col_one .et_pb_gallery_item img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 479px) {
+    .pac_drh_ph_col_one .et_pb_gallery_item {
+        flex-basis: 50.1% !important;
+        flex-grow: 1 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .pac_drh_ph_col_one .et_pb_gallery_item img {
+        width: 100%;
+    }
+
+    /* col 2 */
+    .pac_drh_ph_col_two .et_pb_gallery_item {
+        flex-basis: 34.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_ph_col_two .et_pb_gallery_items::after {
+        content: '';
+        flex-basis: 34.1% !important;
+        flex-grow: 1 !important;
+    }
+
+    .pac_drh_ph_col_two .et_pb_gallery_item:not(:nth-child(2n)) {
+        margin-right: 5.5%;
+    }
+
+    /* 1 col is default for mobile 0-479*/
+}
