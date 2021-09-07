@@ -10,7 +10,7 @@ $currentUser = User::get_current();
 //global $wp;
 //$current_request = $wp->request;
 
-if( !empty($currentUser) && !is_wp_error($currentUser) ){
+if( !empty($currentUser)){
     wp_redirect(home_url('/thong-tin-ho-tro'));
     exit;
 }
