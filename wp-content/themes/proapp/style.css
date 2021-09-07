@@ -325,6 +325,10 @@ table.table-style-main tr td:nth-child(odd){
 .table-res-style-main tbody td:nth-child(2), .table-res-style-main tbody td:nth-child(3), .table-res-style-main tbody td:nth-child(4) {
     text-align:left !important;
 }
+.ttht-layout textarea {
+    min-height: 100px;
+    background: #ddd;
+}
 .table-res-style-main tbody td {
     color: #000;
     font-size: 16px;
