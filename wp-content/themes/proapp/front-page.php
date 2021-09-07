@@ -1,5 +1,18 @@
 <?php
+use SME\Includes\Core\User;
+global $system_api, $currentUser;
+if( isset($_REQUEST['action']) && 'logout' === $_REQUEST['action'] ){
+    $system_api->clear_token_cookie();
+}
+$currentUser = User::get_current();
+//global $wp;
+//$current_request = $wp->request;
 
+if( !empty($currentUser) || $currentUser['email'] != ""){
+    //wp_redirect(home_url('/thong-tin-ho-tro'));
+    wp_redirect( '/thong-tin-ho-tro', '302' );
+    exit;
+}
 get_header('home');
 
 $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
