@@ -12,7 +12,7 @@ $currentUser = User::get_current();
 //$current_request = $wp->request;
 
 if( !empty($currentUser) || $currentUser->email != ""){
-    var_dump($currentUser);
+    var_dump($currentUser->email);
     //wp_redirect(home_url('/thong-tin-ho-tro'));
     wp_redirect( '/thong-tin-ho-tro', '302' );
     //exit;
