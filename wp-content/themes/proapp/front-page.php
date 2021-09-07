@@ -11,10 +11,10 @@ $currentUser = User::get_current();
 //global $wp;
 //$current_request = $wp->request;
 
-if( !empty($currentUser) && $currentUser->email != ""){
+if( !empty($currentUser) || $currentUser->email != ""){
     var_dump($currentUser);
-    wp_redirect(home_url('/thong-tin-ho-tro'));
-    exit;
+    //wp_redirect(home_url('/thong-tin-ho-tro'));
+    //exit;
 }
 
 $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
