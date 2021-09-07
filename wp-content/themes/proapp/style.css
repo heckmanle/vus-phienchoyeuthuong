@@ -318,6 +318,13 @@ table.table-style-main tr td:nth-child(odd){
     position: relative;
 }
 .page-template-page-authentication footer {display: none;}
+.table-res-style-main thead {
+    background: #ba141a;
+    color: #fff;
+}
+.table-res-style-main tbody td:nth-child(1) {
+    text-align:left;
+}
 
 @media screen and (max-width: 768px) {
 
