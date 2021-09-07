@@ -25,7 +25,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
         </div>
 
 	</div> <!-- #page-container -->
-    <footer style="background: url('<?php echo THEME_URL; ?>/images/footer.svg');">
+    <footer>
+        <img src="<?php echo THEME_URL; ?>/images/footer.svg">
     </footer>
 
 
