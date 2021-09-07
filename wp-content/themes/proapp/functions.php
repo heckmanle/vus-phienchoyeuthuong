@@ -236,6 +236,7 @@ require_once THEME_DIR . "/inc/template-twig.php";
 $ajax = new \SME\Includes\AJAX();
 new \SME\System\System();
 $graphql = $GLOBALS['system_api'] = new \DIVI\API\API();
+
 /**
  * query GET example
  * global $system_api;
@@ -7561,3 +7562,63 @@ add_action('add_meta_boxes', 'wpse196289_default_page_template', 1);
 //add_rewrite_rule( '/([^/]*)/?', 'index.php?post_type=posts_be_builder&paged=$matches[1]', 'top');
 //add_rewrite_rule( 'pages-be-builder/?$', 'index.php?post_type=pages_be_builder', 'top');
 
+add_action('app/ajax/register_actions', function(\SME\Includes\AJAX $ajax){
+    $ajax->register_ajax_action('ttht_booking', '_ajax_ttht_booking');
+});
+
+function _ajax_ttht_booking($data, $ajax){
+	$currentUser = \DIVI\Includes\Core\User::get_current();
+	if( !$currentUser ){
+	    return new WP_Error(403, __('Vui lòng đăng nhập'));
+    }
+    $tick = $data['tick'] ?? [];
+    $your_comment = $data['store'] ?? '';
+    $note_1 = $data['note_1'] ?? '';
+    $note_2 = $data['note_2'] ?? '';
+	$your_point = 0;
+    if( $tick ){
+		$products = \DIVI\Includes\Core\Product::products();
+		if( is_wp_error($products) ){
+			$products = [];
+		}
+		$products = array_group_by($products, 'id');
+		$products = array_map('array_shift', $products);
+        foreach ($tick as $pro_id){
+            if( isset($products[$pro_id]) ){
+				$your_point += $products[$pro_id]['product_seo_keywords'];
+            }
+        }
+    }
+	$your_point = (string)$your_point;
+	$your_request = $note_1 . "<br>" . $note_2;
+    $id = $currentUser['id'];
+    $your_request = nl2br($your_request);
+    $your_comment = nl2br($your_comment);
+    $your_request = site_sanitize_output($your_request);
+	$your_comment = site_sanitize_output($your_comment);
+    $compact = compact( 'your_point', 'your_comment', 'your_request');
+    $response = \DIVI\Includes\Core\User::update_user($id, $compact);
+	return $response;
+}
+
+function site_sanitize_output($buffer) {
+
+	$search = array(
+		'/\>[^\S ]+/s',     // strip whitespaces after tags, except space
+		'/[^\S ]+\</s',     // strip whitespaces before tags, except space
+		'/(\s)+/s',         // shorten multiple whitespace sequences
+		'/<!--(.|\s)*?-->/', // Remove HTML comments
+		'/(\")/'
+	);
+	$replace = array(
+		'>',
+		'<',
+		'\\1',
+		'',
+		"'",
+	);
+
+	$buffer = preg_replace($search, $replace, $buffer);
+
+	return $buffer;
+}

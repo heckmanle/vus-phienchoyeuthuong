@@ -396,11 +396,11 @@ table.table-style-main thead tr th:first-child{
 table.table-style-main thead tr th:last-child{
     border-radius: 0 10px 0 0;
 }
-.ttht-wrapper textarea{
+.ttht-wrapper textarea, #step-1-note-1, #step-1-note-2{
     background: #e2e2e2;
     min-height: 120px;
 }
-.ttht-wrapper textarea:focus{
+.ttht-wrapper textarea:focus, #step-1-note-1, #step-1-note-2{
     box-shadow: none;
     background: #e2e2e2;
 }
@@ -411,9 +411,35 @@ table.table-style-main thead tr th:last-child{
     border-color: #b7131b;
 }
 
-.ttht-wrapper .form-group label{
+.ttht-wrapper .form-group label, #modal-step-1 .form-group label, #modal-step-2 .title{
     color: #b7131b;
     font-size: 16px;
     margin-bottom: 0.5rem;
     font-weight: bold;
+}
+#modal-step-1 .form-group label{
+    text-align:center;
+    display: block;
+}
+#modal-step-1 button.modal-btn-action,
+#modal-step-2 button.modal-btn-action{
+    background: #efb614 !important;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 5px 2px #ccc;
+}
+#modal-step-1 .modal-header,
+#modal-step-1 .modal-footer,
+#modal-step-2 .modal-header,
+#modal-step-2 .modal-footer,
+#modal-step-3 .modal-header{
+    background: transparent;
+    border-width: 0;
+}
+#modal-step-2 .title{
+    font-size: 20px;
+    font-weight: bold;
+}
+#modal-step-3 .modal-body{
+    padding: 4rem 1rem;
 }
