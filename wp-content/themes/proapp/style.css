@@ -322,8 +322,8 @@ table.table-style-main tr td:nth-child(odd){
     background: #ba141a;
     color: #fff;
 }
-.table-res-style-main tbody td:nth-child(1) {
-    text-align:left;
+.table-res-style-main tbody td:nth-child(2) {
+    text-align:left !important;
 }
 
 @media screen and (max-width: 768px) {
