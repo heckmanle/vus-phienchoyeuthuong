@@ -1,0 +1,29 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+#modal-user-picture .cropper-view-box{
+    border-radius: 50%;
+    outline: none;
+}
+#modal-user-picture .cropper-move{
+    opacity: 0;
+}
+#modal-user-picture .cropper-dashed,
+#modal-user-picture .cropper-center,
+#modal-user-picture .cropper-point.point-se,
+#modal-user-picture .cropper-point.point-sw,
+#modal-user-picture .cropper-point.point-nw,
+#modal-user-picture .cropper-point.point-ne,
+#modal-user-picture .cropper-point.point-ne,
+#modal-user-picture .cropper-line
+{
+    display: none;
+}
+.user-login-history{
+    max-height: 300px;
+}
+.col-md-9.phone_number {
+    padding: 0 !important;
+}

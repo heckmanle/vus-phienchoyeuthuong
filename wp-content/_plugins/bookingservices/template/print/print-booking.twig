@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="5000">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {% for item in styles %}
+        <link rel="stylesheet" href="{{ item }}">
+    {% endfor %}
+</head>
+<body>
+<div id="print-booking-content" class="print-booking-content">
+    <div class="row">
+        <div class="col-4 print-logo">
+{#            {% if(booking.client.avatar) %}#}
+{#            <img src="{{booking.client.avatar}}" class="print-logo">#}
+{#            {% endif %}#}
+
+        </div>
+        <div class="col-8 text-right coninfo">
+            <p>799 Nguyen Van Linh, Tan Phu Ward, Dist 7. HoChiMinh City</p>
+            <p>ĐT: (84-28) 54135999  -  Fax: (84-28) 54135666</p>
+{#            <p>{{ booking.client.address }}</p>#}
+{#            {% if(booking.client.phone) %}#}
+{#            <p>ĐT: {{ booking.client.phone }}</p>#}
+{#            {% endif %}#}
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12 mb-1">
+            <h2 class="text-center font-weight-bold" style="margin-top: 20px;color: #125bb3;">PHIẾU ĐĂNG KÝ</h2>
+        </div>
+        <div class="col-6 pr-3 text-right">
+            <label class="pr-3">Số</label><label>{{ booking.votes }}</label>
+        </div>
+        <div class="col-6 pl-3">
+            <label class="pr-3">Ngày</label><label>{{ booking.date }}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <label class="pr-3 title_p b_minw">Khách hàng</label><label class="title_p">{{ booking.client.name }}</label>
+        </div>
+        <div class="col-4">
+            <label class="pr-3 title_p">Điện thoại</label><label class="title_p">{{ booking.client.phone }}</label>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-8">
+            <label class="pr-3 title_p b_minw">Chương trình</label><label class="title_p">{{ booking.events.title }}</label>
+        </div>
+        <div class="col-4">
+            <label class="pr-3 title_p">Gian hàng</label><label class="title_p">{{  booking.booth }}</label>
+        </div>
+    </div>
+    <h6 class="text-uppercase">Danh mục đăng ký</h6>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên</th>
+            <th class="">Đơn vị tính</th>
+            <th class="text-right">Số lượng</th>
+            <th class="text-right">Đơn giá</th>
+            <th class="text-right">Thành tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% set _total = 0 %}
+        {% set stt = 0 %}
+        {% for key, item in booking.list_of_equipment %}
+            {% set stt = stt + 1 %}
+            {% set _total = _total + (item.into_money * item.quantity) %}
+            <tr>
+                <td>{{ stt }}</td>
+                <td>{{ item.product.product_title }}</td>
+                <td>{{ item.product.product_unit }}</td>
+                <td class="text-right">{{item.quantity | numberToFormat }}</td>
+                <td class="text-right">
+                    {{ item.into_money | numberToFormat }}
+                </td>
+                <td class="text-right">
+                    {{ (item.into_money * item.quantity) | numberToFormat }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-right" colspan="5">Tổng tiền</td>
+            <td class="text-right">{{ _total | numberToFormat }}</td>
+        </tr>
+        <tr>
+
+            <td class="text-right" colspan="5">VAT({{ booking.vat }}%)</td>
+            <td class="text-right">{{ (_total * booking.vat / 100) | numberToFormat }}</td>
+        </tr>
+        {% set _vat = _total * booking.vat / 100 %}
+        <tr>
+            <td class="text-right" colspan="5">Chiết khấu({{ booking.discount }}%)</td>
+            <td class="text-right">{{ (_total * booking.discount / 100) | numberToFormat }}</td>
+        </tr>
+        {% set _discount = _total * booking.discount / 100 %}
+        {% set _total = _total + _vat - _discount %}
+        <tr>
+            <td class="text-right font-weight-bold" colspan="5">Tổng</td>
+            <td class="text-right font-weight-bold">{{ _total | numberToFormat}}</td>
+        </tr>
+        </tfoot>
+    </table>
+    <div class="money-to-word" style="font-size: 17px;font-style: italic;"><label>Viết bằng chữ: </label> {{ _total | numberToWord }}</div>
+    <div class="signature row mb-5 pb-5">
+        <div class="col-6"></div>
+        <div class="col-6 text-center">
+            <div class="d-flex justify-content-center align-items-end">
+                <label class="mb-0">Ngày </label>
+                <input class="input-signature mb-1" value="{{ day }}">
+                <label class="mb-0">tháng </label>
+                <input class="input-signature mb-1" value="{{ month }}">
+                <label class="mb-0">năm {{ year }}</label>
+            </div>
+            <label class="font-weight-bold">Ký tên</label>
+        </div>
+    </div>
+</div>
+{% if( trigger_print ) %}
+<script>
+    window.print();
+    setTimeout(function(){window.close();},500);
+</script>
+{% endif %}
+</body>
+</html>
+
