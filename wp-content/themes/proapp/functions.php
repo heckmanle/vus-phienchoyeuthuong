@@ -7622,3 +7622,6 @@ function site_sanitize_output($buffer) {
 
 	return $buffer;
 }
+add_filter('app/authentication/login_success_url', function($url){
+    return site_url('/thong-tin-ho-tro');
+}, 100);

@@ -5,7 +5,7 @@
  */
 $currentUser = \DIVI\Includes\Core\User::get_current();
 if( !$currentUser || is_wp_error($currentUser) ){
-    wp_redirect(site_url());
+    wp_redirect(site_url('/'));
     die;
 }
 $products = \DIVI\Includes\Core\Product::products();
