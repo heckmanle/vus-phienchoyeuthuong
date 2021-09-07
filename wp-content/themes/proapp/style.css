@@ -310,7 +310,9 @@ input.checkbox-status:checked + .checkbox-slider:after{
     left: 0;
     bottom: 0;
 }
-
+.___chat_box_after  {
+    width:100%;
+}
 footer img {
     width:100% !important;
 }
