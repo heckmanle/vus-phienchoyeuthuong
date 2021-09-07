@@ -464,5 +464,10 @@ table.table-style-main thead tr th:last-child{
     }
     .page-template-page-x .et-boc .et_pb_column_1_2 {
         width: 100% !important;
+        margin-bottom: 25px !important;
     }
+    .ttht-wrapper form#form-ttht > .form-group, .ttht-wrapper form#form-ttht > .text-right {
+        padding: 0 10px;
+    }
+    .ttht-wrapper form#form-ttht > .text-right {margin-bottom:30px;}
 }
