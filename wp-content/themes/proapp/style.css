@@ -317,6 +317,7 @@ table.table-style-main tr th:nth-child(odd),
 table.table-style-main tr td:nth-child(odd){
     position: relative;
 }
+.page-template-page-authentication footer {display: none;}
 
 @media screen and (max-width: 768px) {
 
