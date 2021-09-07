@@ -3,13 +3,17 @@
 /**
  * Template Name: Thông tin hỗ trợ
  */
-
+$currentUser = \DIVI\Includes\Core\User::get_current();
+if( !$currentUser || is_wp_error($currentUser) ){
+    wp_redirect(site_url('/'));
+    die;
+}
 $products = \DIVI\Includes\Core\Product::products();
 if( is_wp_error($products) ){
     $products = [];
 }
 get_header();
-
+global $currentUser;
 $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 ?>
@@ -77,7 +81,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <?php endif; ?>
 <div class="ttht-wrapper">
     <div class="container">
-        <form>
+        <form id="form-ttht" action="<?php echo admin_url('admin-ajax.php'); ?>">
+            <input type="hidden" name="action" value="handle_ajax">
+            <input type="hidden" name="func" value="ttht_booking">
             <div class="table-responsive table-res-style-main mb-5">
                 <table class="table table-style-main">
                     <thead>
@@ -104,7 +110,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             <td class="text-center">%s</td>
                             <td class="text-center">
                                 <label class="switch switch-circle mb-0 check-item d-flex align-items-center justify-content-center">
-                                    <input class="checkbox-status check" autocomplete="off" type="checkbox" value="%s">
+                                    <input class="checkbox-status check" name="tick[]" autocomplete="off" type="checkbox" value="%s">
                                     <span class="checkbox-slider fa"></span>
                                 </label>
                             </td>
@@ -121,29 +127,18 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                 <label><?php _e('Chia sẻ thêm câu chuyện của bạn'); ?>: </label>
                 <textarea class="form-control" name="store"></textarea>
             </div>
+            <?php if($currentUser): ?>
             <div class="text-right">
-                <button class="btn btn-primary btn-submit-ttht<?php if(is_user_logged_in()) {echo ' btn-submit-not-logged';} ?>" type="submit">
+                <button class="btn btn-primary btn-submit-ttht" type="submit">
                     <?php _e('Cập nhật'); ?>
                 </button>
             </div>
+            <?php else: ?>
+            <div><?php _e('Bạn chưa được xác thực đăng nhập. Vui lòng') ?> <a href="<?php echo site_url('/authentication/') ?>" class="redirect-login btn btn-primary"><?php _e('Đăng nhập'); ?></a></div>
+            <?php endif; ?>
         </form>
     </div>
 </div>
-<?php if( !is_user_logged_in() ): ?>
-    <div id="modal-confirm-logged" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog" aria-modal="true">
-        <div class="modal-dialog modal-close-inside modal-dialog-centered ">
-            <div class="modal-content ">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                    <h4 class="modal-title" data-title="Bạn có chắc chắn xoá kinh nghiệm làm việc?">Bạn chưa được xác thực đăng nhập.</h4>
-                </div>
-                <div class="modal-body text-center">
-                    <a href="<?php echo site_url('/authentication/') ?>" class="redirect-login btn btn-primary"><?php _e('Đăng nhập'); ?></a>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
     <div id="modal-step-1" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog" aria-modal="true">
         <div class="modal-dialog modal-close-inside modal-dialog-centered ">
             <div class="modal-content ">
@@ -151,32 +146,146 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
-                    <p class="text-center"><?php _e('Bạn đang cần hỗ trợ'); ?>:</p>
+                    <p class="text-center mb-4"><?php _e('Bạn đang cần hỗ trợ'); ?>:</p>
                     <div class="form-group">
                         <label><?php _e('TIỀN MẶT'); ?></label>
-                        <textarea id="step-1-note-1" class="form-control"><?php echo _e("Vui lòng điền đầy đủ thông tin\nChủ tài khoản:\nSố tài khoản:\nNgân hàng:"); ?></textarea>
+                        <textarea id="step-1-note-1" class="form-control"><?php _e("Vui lòng điền đầy đủ thông tin\nChủ tài khoản: \nSố tài khoản: \nNgân hàng: "); ?></textarea>
                     </div>
                     <div class="form-group">
                         <label><?php _e('KHÁC'); ?></label>
                         <textarea id="step-1-note-2" class="form-control" placeholder="<?php _e('[Vui lòng ghi rõ]'); ?>"></textarea>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-primary btn-yes font-weight-500 modal-btn-action "><?php _e('Hoàn tất') ?></button>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-default btn-primary modal-btn-action "><?php _e('Hoàn tất') ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-step-2" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-close-inside modal-dialog-centered ">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="title text-center"><?php _e('XÁC NHẬN THÔNG TIN') ?></h3>
+                    <div class="step2-info"></div>
+                    <div class="notification d-none mt-4"></div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-default btn-primary modal-btn-action "><?php _e('Xác nhận') ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-step-3" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-close-inside modal-dialog-centered ">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div><?php _e('Cảm ơn bạn đã chia sẻ thông tin.') ?></div>
+                    <div><?php _e('VUS sẽ liên hệ với bạn ngay lập tức để hỗ trợ.') ?></div>
                 </div>
             </div>
         </div>
     </div>
 <script>
+    const TTHT_IMAGE_LOADING = {
+        message: '<div class="ball-clip-rotate-multiple"> <div></div><div></div></div>',
+    };
     jQuery(function ($){
+        function _nl2br (str) {
+            if (typeof str === 'undefined' || str === null) {
+                return '';
+            }
+            let breakTag = '<br>';
+            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+        }
+        const _getTextMessageByXHR = (xhr, errThrow) => {
+            let textError = '';
+            if( xhr.hasOwnProperty('responseJSON') && xhr.responseJSON.hasOwnProperty( 'message' ) && (xhr.responseJSON.message != '') ){
+                textError = xhr.responseJSON.message;
+            }else if( errThrow != '' ){
+                textError = xhr.getResponseHeader('xhr-message') || errThrow;
+                try{
+                    textError = JSON.parse(textError);
+                } catch(e){
+                    textError = 'An error occurred, please try again';
+                }
+            }else{
+                textError = 'An error occurred, please try again';
+            }
+            return textError;
+        }
+        const _renderAlert = (message, type = 'error') => {
+            let classes_alert = '';
+            switch (type){
+                case 'success':
+                    classes_alert = 'alert-success';
+                    break;
+                case 'warning':
+                    classes_alert = 'alert-warning';
+                    break;
+                case 'error':
+                default:
+                    classes_alert = 'alert-danger';
+                    break;
+            }
+            return '<div class="alert ' + classes_alert + ' alert-dismissible" role="alert">\n' +
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>\n' +
+                '<div class="message-response notification">' +
+                message +
+                '</div>\n' +
+                '</div>';
+        }
         $('.btn-submit-ttht').click(function (ev){
             ev.preventDefault();
             let $this = $(this), $form = $this.closest('form');
-            if( $this.hasClass('btn-submit-not-logged') ){
-                $('#modal-confirm-logged').modal();
-            }else{
-                $('#modal-step-1').modal();
-            }
+            $('#modal-step-1').modal();
+        });
+        $('#modal-step-1 .modal-btn-action').click(function(ev){
+            ev.preventDefault();
+            $('#modal-step-1').modal('hide');
+            let info = '';
+            info = $('#step-1-note-1').val();
+            info = info.replace("Vui lòng điền đầy đủ thông tin\n", '');
+            info += "\n";
+            info += $('#step-1-note-2').val();
+            info = _nl2br(info);
+            $('#modal-step-2 .step2-info').html(info);
+            $('#modal-step-2 .notification').html('').addClass('d-none');
+            $('#modal-step-2').modal();
+        });
+        $('#modal-step-2 .modal-btn-action').click(function(ev) {
+            ev.preventDefault();
+            let $form = $('form#form-ttht');
+            let options = {
+                dataType: 'json',
+                beforeSubmit: function(serialize, form, option) {
+                    serialize.push({name: 'note_1', type: 'textarea', value: $('#step-1-note-1').val()});
+                    serialize.push({name: 'note_2', type: 'textarea', value: $('#step-1-note-2').val()});
+                },
+                beforeSend: function () {
+                    $('body').block(TTHT_IMAGE_LOADING);
+                },
+                success: function(response, status, xhr){
+                    $('#modal-step-2').modal('hide');
+                    $('#modal-step-3').modal();
+                },
+                error: function(xhr, status, errThrow){
+                    let textError = _getTextMessageByXHR(xhr, errThrow);
+                    textError = _renderAlert(textError);
+                    $('#modal-step-2 .notification').html(textError).removeClass('d-none');
+                },
+                complete: function(xhr, status){
+                    $('body').unblock(TTHT_IMAGE_LOADING);
+                    return;
+                }
+            };
+            $form.ajaxSubmit(options);
         });
     });
 </script>

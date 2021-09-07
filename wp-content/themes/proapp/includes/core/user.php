@@ -94,6 +94,7 @@ class User
 					'role_name',
 					'id',
 				],
+				'department',
 				'direct_management' => [
 					'email',
 					'name',
