@@ -7,6 +7,7 @@ if( isset($_REQUEST['action']) && 'logout' === $_REQUEST['action'] ){
 }
 $currentUser = User::get_current();
 
+var_dump($currentUser);
 //global $wp;
 //$current_request = $wp->request;
 
