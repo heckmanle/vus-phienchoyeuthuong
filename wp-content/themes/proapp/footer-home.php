@@ -15,33 +15,29 @@ do_action( 'et_after_main_content' );
 
 if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
-	<span class="et_pb_scroll_top et-pb-icon"></span>
+    <span class="et_pb_scroll_top et-pb-icon"></span>
 
 <?php endif;
 
 //if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 
-        </div>
+</div>
 
-	</div> <!-- #page-container -->
-    <footer>
-        <img src="<?php echo THEME_URL; ?>/images/footer.png">
-    </footer>
+</div> <!-- #page-container -->
 
+<?php wp_footer(); ?>
+<script>
+    jQuery(function($){
+        $('.et_pb_accordion .et_pb_toggle_open').addClass('et_pb_toggle_close').removeClass('et_pb_toggle_open');
 
-	<?php wp_footer(); ?>
-    <script>
-        jQuery(function($){
-            $('.et_pb_accordion .et_pb_toggle_open').addClass('et_pb_toggle_close').removeClass('et_pb_toggle_open');
-
-            $('.et_pb_accordion .et_pb_toggle').click(function() {
-                $this = $(this);
-                setTimeout(function(){
-                    $this.closest('.et_pb_accordion').removeClass('et_pb_accordion_toggling');
-                },700);
-            });
+        $('.et_pb_accordion .et_pb_toggle').click(function() {
+            $this = $(this);
+            setTimeout(function(){
+                $this.closest('.et_pb_accordion').removeClass('et_pb_accordion_toggling');
+            },700);
         });
-    </script>
+    });
+</script>
 </body>
 </html>

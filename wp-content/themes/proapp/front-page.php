@@ -1,11 +1,5 @@
 <?php
-use SME\Includes\Core\User;
-global $system_api, $currentUser;
-$currentUser = User::get_current();
-if( !empty($currentUser) && !is_wp_error($currentUser) ) {
-    wp_redirect( home_url('/thong-tin-ho-tro') );
-    exit;
-}
+
 get_header('home');
 
 $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
@@ -78,4 +72,4 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 <?php
 
-get_footer();
+get_footer('home');
