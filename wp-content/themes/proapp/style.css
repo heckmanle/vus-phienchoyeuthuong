@@ -302,6 +302,13 @@ input.checkbox-status:checked + .checkbox-slider:after{
     left: 0;
     bottom: 0;
 }
+footer image {
+    width:100%;
+}
+
+@media screen and (max-width: 768px) {
+
+}
 
 
 
