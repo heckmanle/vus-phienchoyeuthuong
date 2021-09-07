@@ -26,7 +26,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 	</div> <!-- #page-container -->
     <footer>
-        <img src="<?php echo THEME_URL; ?>/images/footer.svg">
+        <img src="<?php echo THEME_URL; ?>/images/footer.png">
     </footer>
 
 
