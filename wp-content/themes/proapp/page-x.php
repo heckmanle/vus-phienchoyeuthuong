@@ -101,9 +101,17 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                     if( $products ){
                         $stt = 0;
                         $strSL = "";
+                        $product_title = "";
                         foreach ($products as $item){
                             $stt++;
                             $address = !empty($item['address']) && !is_null($item['address']) && $item['address'] != 'NULL' ? $item['address'] : '';
+
+                            if($item['product_slug'] == "co-nguoi-benh") {
+                                $product_title = $item['product_title'] . "<br/><input type='text' value='' name='tbl_text_conguoibenh_".$stt."' class='tbl_col_cngb'>";
+                            } else {
+                                $product_title = $item['product_title'];
+                            }
+
                             if($item['product_seo_description'] == "N") {
                                 $strSL = "<input type='text' value='' name='tbl_sl_".$stt."' class='tbl_col_sl'>";
                             } else {
@@ -124,7 +132,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                 </label>
                             </td>
                         </tr>
-                        ', $stt, $item['product_title'], $item['product_excerpt'], $address, $strSL, $item['id']);
+                        ', $stt, $product_title, $item['product_excerpt'], $address, $strSL, $item['id']);
                         }
                     }
                     ?>
