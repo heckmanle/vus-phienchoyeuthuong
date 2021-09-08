@@ -7575,7 +7575,10 @@ function _ajax_ttht_booking($data, $ajax){
     $your_comment = $data['store'] ?? '';
     $note_1 = $data['note_1'] ?? '';
     $note_2 = $data['note_2'] ?? '';
+    $tbl_text_conguoibenh = $data['tbl_text_conguoibenh'] ?? [];
+    $tbl_sl = $data['tbl_sl'] ?? [];
 	$your_point = 0;
+	$your_submit = [];
     if( $tick ){
 		$products = \DIVI\Includes\Core\Product::products();
 		if( is_wp_error($products) ){
@@ -7585,9 +7588,25 @@ function _ajax_ttht_booking($data, $ajax){
 		$products = array_map('array_shift', $products);
         foreach ($tick as $pro_id){
             if( isset($products[$pro_id]) ){
-				$your_point += $products[$pro_id]['product_seo_keywords'];
+                $_product = $products[$pro_id];
+                if(  $_product['product_seo_description'] == "N" ){
+					$amount = isset($tbl_sl[$pro_id]) ? $tbl_sl[$pro_id] : 0;
+                }else{
+					$amount = 1;
+                }
+                if( isset($tbl_text_conguoibenh[$pro_id]) && $tbl_text_conguoibenh[$pro_id] ){
+					$text = nl2br($tbl_text_conguoibenh[$pro_id]);
+					$text = site_sanitize_output($text);
+					$your_submit[] = $text;
+                }
+				$your_point += $amount * $_product['product_seo_keywords'];
             }
         }
+    }
+    if( $your_submit ){
+		$your_submit = implode('<br>', $your_submit);
+    }else{
+        $your_submit = '';
     }
 	$your_point = (string)$your_point;
 	$your_request = $note_1 . "<br>" . $note_2;
@@ -7596,7 +7615,7 @@ function _ajax_ttht_booking($data, $ajax){
     $your_comment = nl2br($your_comment);
     $your_request = site_sanitize_output($your_request);
 	$your_comment = site_sanitize_output($your_comment);
-    $compact = compact( 'your_point', 'your_comment', 'your_request');
+    $compact = compact( 'your_point', 'your_comment', 'your_request', 'your_submit');
     $response = \DIVI\Includes\Core\User::update_user($id, $compact);
 	return $response;
 }
