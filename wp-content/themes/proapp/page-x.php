@@ -107,7 +107,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             $address = !empty($item['address']) && !is_null($item['address']) && $item['address'] != 'NULL' ? $item['address'] : '';
 
                             if($item['product_slug'] == "co-nguoi-benh") {
-                                $product_excerpt = $item['product_excerpt'] . "<br/><input type='text' value='' name='tbl_text_conguoibenh_".$stt."' class='tbl_col_cngb'>";
+                                $product_excerpt = $item['product_excerpt'] . "<br/><textarea name='tbl_text_conguoibenh_".$stt."' class='tbl_col_cngb'></textarea>";
                             } else {
                                 $product_excerpt = $item['product_excerpt'];
                             }
