@@ -100,6 +100,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                     <?php
                     if( $products ){
                         $stt = 0;
+                        $strSL = "";
                         foreach ($products as $item){
                             $stt++;
                             $address = !empty($item['address']) && !is_null($item['address']) && $item['address'] != 'NULL' ? $item['address'] : '';
@@ -117,7 +118,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                 </label>
                             </td>
                         </tr>
-                        ', $stt, $item['product_title'], $item['product_excerpt'], $address, $item['product_seo_description'], $item['id']);
+                        ', $stt, $item['product_title'], $item['product_excerpt'], $address, $strSL, $item['id']);
                         }
                     }
                     ?>
