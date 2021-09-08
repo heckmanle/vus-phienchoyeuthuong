@@ -445,6 +445,10 @@ table.table-style-main thead tr th:last-child{
 #modal-step-3 .modal-body{
     padding: 4rem 1rem;
 }
+.page-template-page-authentication .slick-next,
+.page-template-page-authentication .slick-prev {
+display: none;
+}
 
 
 @media only screen and (max-width: 768px) {
@@ -462,7 +466,7 @@ table.table-style-main thead tr th:last-child{
         width: 200px;
         margin: 0 auto;
     }
-    .page-template-page-x .et-boc .et_pb_column_1_2 {
+    .page-template-page-x .et-boc .et_pb_column_1_2.et_pb_column_0, .page-template-page-x .et-boc .et_pb_column_1_2.et_pb_column_1 {
         width: 100% !important;
         margin-bottom: 25px !important;
     }
