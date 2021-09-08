@@ -104,6 +104,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         foreach ($products as $item){
                             $stt++;
                             $address = !empty($item['address']) && !is_null($item['address']) && $item['address'] != 'NULL' ? $item['address'] : '';
+                            if($item['product_seo_description'] == "N") {
+                                $strSL = "<input type='text'>";
+                            } else {
+                                $strSL = $item['product_seo_description'];
+                            }
+
                             echo sprintf('
                         <tr>
                             <td class="text-center">%d</td>
