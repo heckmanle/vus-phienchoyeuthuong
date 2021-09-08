@@ -105,7 +105,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             $stt++;
                             $address = !empty($item['address']) && !is_null($item['address']) && $item['address'] != 'NULL' ? $item['address'] : '';
                             if($item['product_seo_description'] == "N") {
-                                $strSL = "<input type='text' width='20' name='tbl_sl_'".$stt.">";
+                                $strSL = "<input type='text' width='20' name='tbl_sl_".$stt."' class='tbl_col_sl'>";
                             } else {
                                 $strSL = $item['product_seo_description'];
                             }
