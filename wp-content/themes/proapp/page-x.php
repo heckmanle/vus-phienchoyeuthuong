@@ -107,13 +107,13 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             $address = !empty($item['address']) && !is_null($item['address']) && $item['address'] != 'NULL' ? $item['address'] : '';
 
                             if($item['product_slug'] == "co-nguoi-benh") {
-                                $product_excerpt = $item['product_excerpt'] . "<br/><textarea name='tbl_text_conguoibenh_".$stt."' class='tbl_col_cngb'></textarea>";
+                                $product_excerpt = $item['product_excerpt'] . "<br/><textarea name='tbl_text_conguoibenh[{$item['id']}]' class='tbl_col_cngb'></textarea>";
                             } else {
                                 $product_excerpt = $item['product_excerpt'];
                             }
 
                             if($item['product_seo_description'] == "N") {
-                                $strSL = "<input type='text' value='' name='tbl_sl_".$stt."' class='tbl_col_sl'>";
+                                $strSL = "<input type='text' value='' name='tbl_sl[{$item['id']}]' class='tbl_col_sl text-center'>";
                             } else {
                                 $strSL = $item['product_seo_description'];
                             }

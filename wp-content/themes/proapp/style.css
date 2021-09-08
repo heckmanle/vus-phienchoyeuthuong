@@ -375,7 +375,11 @@ table.table-style-main tr td:last-child:after{
 table.table-style-main tbody tr:nth-child(even){
     background-color: #f2f4f9;
 }
-table.table-style-main .switch-circle{
+table.table-style-main td > *{
+    position: relative;
+}
+table.table-style-main .switch-circle,
+table.table-style-main td > *{
     z-index: 3;
 }
 table.table-style-main .switch-circle .checkbox-slider{
