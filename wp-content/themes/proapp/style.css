@@ -450,7 +450,11 @@ table.table-style-main thead tr th:last-child{
 display: none;
 }
 .tbl_col_sl {width: 30px !important;}
-.tbl_col_cngb {width: 100% !important;}
+.tbl_col_cngb {
+    width: 100% !important;
+    min-height: 30px !important;
+    background: #fff !important;
+    }
 
 
 @media only screen and (max-width: 768px) {
