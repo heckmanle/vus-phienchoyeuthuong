@@ -101,15 +101,15 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                     if( $products ){
                         $stt = 0;
                         $strSL = "";
-                        $product_title = "";
+                        $product_excerpt = "";
                         foreach ($products as $item){
                             $stt++;
                             $address = !empty($item['address']) && !is_null($item['address']) && $item['address'] != 'NULL' ? $item['address'] : '';
 
                             if($item['product_slug'] == "co-nguoi-benh") {
-                                $product_title = $item['product_title'] . "<br/><input type='text' value='' name='tbl_text_conguoibenh_".$stt."' class='tbl_col_cngb'>";
+                                $product_excerpt = $item['product_excerpt'] . "<br/><input type='text' value='' name='tbl_text_conguoibenh_".$stt."' class='tbl_col_cngb'>";
                             } else {
-                                $product_title = $item['product_title'];
+                                $product_excerpt = $item['product_excerpt'];
                             }
 
                             if($item['product_seo_description'] == "N") {
@@ -132,7 +132,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                 </label>
                             </td>
                         </tr>
-                        ', $stt, $product_title, $item['product_excerpt'], $address, $strSL, $item['id']);
+                        ', $stt, $item['product_title'], , $address, $strSL, $item['id']);
                         }
                     }
                     ?>
