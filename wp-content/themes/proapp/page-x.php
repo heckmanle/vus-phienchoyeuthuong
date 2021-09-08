@@ -92,7 +92,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         <th class="text-center th-col-2">TIÊU CHÍ</th>
                         <th class="text-center th-col-2">ĐỊNH NGHĨA</th>
                         <th class="text-center th-col-3">TIÊU CHÍ</th>
-                        <th class="text-center th-col-4">TICK ĐỂ CHỌN</th>
+                        <th class="text-center th-col-4">SL</th>
+                        <th class="text-center th-col-5">TICK ĐỂ CHỌN</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -108,6 +109,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             <td class="text-uppercase text-center">%s</td>
                             <td class="text-center">%s</td>
                             <td class="text-center">%s</td>
+                            <td class="text-center">%s</td>
                             <td class="text-center">
                                 <label class="switch switch-circle mb-0 check-item d-flex align-items-center justify-content-center">
                                     <input class="checkbox-status check" name="tick[]" autocomplete="off" type="checkbox" value="%s">
@@ -115,7 +117,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                 </label>
                             </td>
                         </tr>
-                        ', $stt, $item['product_title'], $item['product_excerpt'], $address, $item['id']);
+                        ', $stt, $item['product_title'], $item['product_excerpt'], $address, $item['product_seo_description'], $item['id']);
                         }
                     }
                     ?>
