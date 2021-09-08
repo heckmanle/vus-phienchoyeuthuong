@@ -466,7 +466,7 @@ display: none;
         width: 200px;
         margin: 0 auto;
     }
-    .page-template-page-x .et-boc .et_pb_column_1_2.et_pb_column_0, .page-template-page-x .et-boc .et_pb_column_1_2.et_pb_column_1 {
+     .et-boc .et_pb_column_1_2.et_pb_column_0,  .et-boc .et_pb_column_1_2.et_pb_column_1 {
         width: 100% !important;
         margin-bottom: 25px !important;
     }
