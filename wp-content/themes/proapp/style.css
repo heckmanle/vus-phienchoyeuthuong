@@ -471,6 +471,9 @@ display: none !important;
         right: 0;
         position: fixed;
     }
+    .et_pb_sidebar_0.et_pb_widget_area {
+        width: 100% !important;
+    }
     .mobile-toggle-header-nav .fa-bars {display: none;}
     .logo {
         width: 200px;
