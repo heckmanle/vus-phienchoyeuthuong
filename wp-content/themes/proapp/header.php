@@ -18,19 +18,19 @@ $arrayUsers = array (
 
 foreach($arrayUsers as $aU ) {
 
-        echo $aU[0] . " - " . $aU[1];
         //$data['department'] = ;
-//        $data['name'] = $aU[0];
-//        $data['email'] = $aU[1];
-//        $data['password'] = $aU[2];
-//        $data['phone'] = $aU[3];
-//        $data['roles'] = $aU[4];
-//        $data['status'] = $aU[5];
+        $data['name'] = $aU[0];
+        $data['email'] = $aU[1];
+        $data['password'] = $aU[2];
+        $data['phone'] = $aU[3];
+        $data['roles'] = $aU[4];
+        $data['status'] = $aU[5];
 
-//        $response = User::add_user($data);
-//        if( is_wp_error($response) ){
-//            return $response;
-//        }
+        $response = User::add_user($data);
+        var_dump($response);
+        if( is_wp_error($response) ){
+            return $response;
+        }
 
 }
 
