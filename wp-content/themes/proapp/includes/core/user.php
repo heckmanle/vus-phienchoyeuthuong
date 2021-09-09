@@ -370,6 +370,7 @@ class User
 				return new \WP_Error(401, __('Điện thoại đã được sử dụng'));
 			}
 		}
+        var_dump('----1xxxx');
 		$compact = compact($fields);
 		global $system_api;
 
