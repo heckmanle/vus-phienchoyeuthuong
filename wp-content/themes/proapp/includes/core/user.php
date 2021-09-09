@@ -336,6 +336,7 @@ class User
 		}
 
 		if( !empty($data['id']) ){
+            var_dump('----0-ID');
 			$users = self::users();
 			if( !empty($users) ){
 				$filter = array_filter($users, function($item) use($email, $id){
@@ -358,6 +359,7 @@ class User
 			$func = 'updateUser';
 			$fields[] = 'id';
 		}else{
+            var_dump('----0-NOT-ID');
 			$func = 'addUser';
 			$check_account = self::check_account($email);
 			if( true === $check_account ){
