@@ -18,8 +18,6 @@ $arrayUsers = array (
                 array ("Hien Test 10","leluhien10@gmail.com", "123456@", "+84868101719", "60d98c136f9c907706c41b0d", "verified"),
                 );
 
-$user = User::get_user_by_id("60d98c146f9c907706c41b12");
-var_dump($user);
 
 foreach($arrayUsers as $aU ) {
 
