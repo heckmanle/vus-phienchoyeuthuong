@@ -24,6 +24,7 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
     foreach ($arrayUsers as $aU) {
 
         //$data['department'] = ;
+        $data2['id'] = '';
         $data2['name'] = $aU[0];
         $data2['email'] = $aU[1];
         $data2['password'] = $aU[2];
