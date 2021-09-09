@@ -451,7 +451,7 @@ table.table-style-main thead tr th:last-child{
 }
 .page-template-page-authentication .slick-next,
 .page-template-page-authentication .slick-prev {
-display: none;
+display: none !important;
 }
 .tbl_col_sl {width: 30px !important;}
 .tbl_col_cngb {
