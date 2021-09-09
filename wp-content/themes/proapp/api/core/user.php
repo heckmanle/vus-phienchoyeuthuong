@@ -287,7 +287,7 @@ class User
 			'avatar' => '',
 			'note' => '',
 			'roles' => '',
-            'department' => '',
+            'department' => [],
 			'direct_management' => '',
 			'status' => '',
 			'password' => '',
@@ -393,7 +393,7 @@ class User
 		if( preg_match('/(phone_1 dup key:)/i', $message) ){
 			$response = new \WP_Error(409, __('Điện thoại đã bị được sử dụng.'));
 		}
-		return $response;
+		return $error;
 	}
 }
 

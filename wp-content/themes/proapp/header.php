@@ -34,12 +34,12 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
         $data2['avatar'] = "";
         $data2['note'] = "";
         $data2['roles'] = $aU[3];
-        $data2['department'] = "";
-        $data2['direct_management'] = "";
+        $data2['department'] = [];
+        $data2['direct_management'] = "60d98c146f9c907706c41b12"; //Quản lý trực tiếp
         $data2['status'] = $aU[4];
         $data2['password'] = $aU[5];
 
-        $response = User::add_user($data2);
+        $response = \DIVI\Includes\Core\User::add_user($data2);
         var_dump($response);
         if (is_wp_error($response)) {
             return $response;
