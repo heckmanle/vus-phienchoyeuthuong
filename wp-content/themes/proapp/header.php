@@ -35,7 +35,7 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
         $data2['note'] = "";
         $data2['roles'] = $aU[3];
         $data2['department'] = "";
-        $data2['direct_management'] = "";
+        $data2['direct_management'] = "f20c076a46cfab138f4ab1b0907aa1c9db1bc472";
         $data2['status'] = $aU[4];
         $data2['password'] = $aU[5];
 
@@ -46,6 +46,7 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
         }
 
     }
+    die();
 
 }//end if
 ///////////////// END TEST IMPORT ///////////
