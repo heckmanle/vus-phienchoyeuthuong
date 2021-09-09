@@ -17,20 +17,27 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
 
     $data2 = array();
     $arrayUsers = array(
-        array("Hien Test 10", "leluhien10@gmail.com", "123456@", "+84868101719", "60d98c136f9c907706c41b0d", "verified"),
+        array("leluhien10@gmail.com", "Hien Test 10", "+84868101719", "60d98c136f9c907706c41b0d", "verified", "123456@"),
     );
 
 
     foreach ($arrayUsers as $aU) {
 
         //$data['department'] = ;
-        $data2['id'] = '';
-        $data2['name'] = $aU[0];
-        $data2['email'] = $aU[1];
-        $data2['password'] = $aU[2];
-        $data2['phone'] = $aU[3];
-        $data2['roles'] = $aU[4];
-        $data2['status'] = $aU[5];
+        $data2['id'] = "";
+        $data2['email'] = $aU[0];
+        $data2['name'] = $aU[1];
+        $data2['phone'] = $aU[2];
+        $data2['address'] = "";
+        $data2['birthdate'] = "";
+        $data2['role_title'] = "";
+        $data2['avatar'] = "";
+        $data2['note'] = "";
+        $data2['roles'] = $aU[3];
+        $data2['department'] = "";
+        $data2['direct_management'] = "";
+        $data2['status'] = $aU[4];
+        $data2['password'] = $aU[5];
 
         $response = User::add_user($data2);
         var_dump($response);
