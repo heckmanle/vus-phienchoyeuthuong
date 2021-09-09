@@ -297,6 +297,7 @@ class User
 	}
 
 	public static function add_user($data){
+	    var_dump('----0');
 		$defaults = [
 			'id' => '',
 			'email' => '',
@@ -335,6 +336,7 @@ class User
 		}
 
 		if( !empty($data['id']) ){
+            var_dump('----0-ID');
 			$users = self::users();
 			if( !empty($users) ){
 				$filter = array_filter($users, function($item) use($email, $id){
@@ -357,6 +359,7 @@ class User
 			$func = 'updateUser';
 			$fields[] = 'id';
 		}else{
+            var_dump('----0-NOT-ID');
 			$func = 'addUser';
 			$check_account = self::check_account($email);
 			if( true === $check_account ){
@@ -367,13 +370,19 @@ class User
 				return new \WP_Error(401, __('Điện thoại đã được sử dụng'));
 			}
 		}
+        var_dump('----1xxxx');
 		$compact = compact($fields);
 		global $system_api;
+
+        var_dump($compact."||");
 
 		$response = $system_api->re_query('POST', $func, [
 			'params' => $compact,
 			'fields' => self::$field_default,
 		], true);
+
+        var_dump($response);
+
 		if( is_wp_error($response) ){
 			$response = self::convert_message_error($response);
 			return $response;
