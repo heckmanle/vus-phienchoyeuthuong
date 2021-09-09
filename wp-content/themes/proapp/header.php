@@ -20,7 +20,6 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
         array("leluhien11@gmail.com", "Hien Test 10", "+84868101799", "60d98c136f9c907706c41b0d", "verified", "123456@"),
     );
 
-
     foreach ($arrayUsers as $aU) {
 
         //$data['department'] = ;
