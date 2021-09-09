@@ -312,8 +312,9 @@ class User
 		if( !empty($data['password']) ){
 			$fields[] = 'password';
 		}
-
+        var_dump('--DEBUG HERE ..0 ---');
 		if( !empty($data['id']) ){
+            var_dump('--DEBUG HERE ID---');
 			$users = self::users();
 			if( !empty($users) ){
 				$filter = array_filter($users, function($item) use($email, $id){
