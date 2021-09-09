@@ -12,7 +12,7 @@ if( isset($_REQUEST['action']) && 'logout' === $_REQUEST['action'] ){
 }
 $currentUser = User::get_current();
 
-/////////////////
+///////////////// TEST IMPORT ///////////
 if(isset($_GET['import']) && $_GET['import'] == "OK") {
 
     $data2 = array();
@@ -31,7 +31,6 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
         $data2['roles'] = $aU[4];
         $data2['status'] = $aU[5];
 
-
         $response = User::add_user($data2);
         var_dump($response);
         if (is_wp_error($response)) {
@@ -41,6 +40,7 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
     }
 
 }//end if
+///////////////// END TEST IMPORT ///////////
 
 
 global $wp;
