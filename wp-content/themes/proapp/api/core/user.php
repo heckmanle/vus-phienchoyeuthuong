@@ -336,6 +336,7 @@ class User
 			$func = 'updateUser';
 			$fields[] = 'id';
 		}else{
+		    var_dump('--DEBUG HERE---');
 			$func = 'addUser';
 			$check_account = self::check_account($email);
 			if( true === $check_account ){
