@@ -18,7 +18,7 @@ $arrayUsers = array (
 
 foreach($arrayUsers as $aU ) {
     foreach($aU as $iCol ) {
-        echo $iCol . " - ";
+        //echo $iCol . " - ";
     }
 }
 
