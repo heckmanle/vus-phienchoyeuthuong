@@ -13,24 +13,24 @@ if( isset($_REQUEST['action']) && 'logout' === $_REQUEST['action'] ){
 $currentUser = User::get_current();
 
 $arrayUsers = array (
-                array ("Hien Test","leluhien10@gmail.com", "123456@", "+84868101719", "60d98c136f9c907706c41b0d", "verified"),
+                array ("Hien Test 10","leluhien10@gmail.com", "123456@", "+84868101719", "60d98c136f9c907706c41b0d", "verified"),
                 );
 
 foreach($arrayUsers as $aU ) {
 
-        //echo $iCol . " - ";
+        echo $aU[0] . " - " . $aU[1];
         //$data['department'] = ;
-        $data['name'] = $aU[0];
-        $data['email'] = $aU[1];
-        $data['password'] = $aU[2];
-        $data['phone'] = $aU[3];
-        $data['roles'] = $aU[4];
-        $data['status'] = $aU[5];
+//        $data['name'] = $aU[0];
+//        $data['email'] = $aU[1];
+//        $data['password'] = $aU[2];
+//        $data['phone'] = $aU[3];
+//        $data['roles'] = $aU[4];
+//        $data['status'] = $aU[5];
 
-        $response = User::add_user($data);
-        if( is_wp_error($response) ){
-            return $response;
-        }
+//        $response = User::add_user($data);
+//        if( is_wp_error($response) ){
+//            return $response;
+//        }
 
 }
 
