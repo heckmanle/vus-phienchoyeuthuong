@@ -297,6 +297,7 @@ class User
 	}
 
 	public static function add_user($data){
+	    var_dump('----0');
 		$defaults = [
 			'id' => '',
 			'email' => '',
