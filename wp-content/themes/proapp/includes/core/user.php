@@ -374,10 +374,15 @@ class User
 		$compact = compact($fields);
 		global $system_api;
 
+        var_dump($compact."||");
+
 		$response = $system_api->re_query('POST', $func, [
 			'params' => $compact,
 			'fields' => self::$field_default,
 		], true);
+
+        var_dump($response);
+
 		if( is_wp_error($response) ){
 			$response = self::convert_message_error($response);
 			return $response;
