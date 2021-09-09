@@ -40,7 +40,7 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
         $data2['password'] = $aU[5];
 
         $response = User::add_user($data2);
-        var_dump($data2);
+        var_dump($response);
         if (is_wp_error($response)) {
             return $response;
         }
