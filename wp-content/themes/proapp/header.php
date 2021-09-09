@@ -46,6 +46,7 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
         }
 
     }
+    die();
 
 }//end if
 ///////////////// END TEST IMPORT ///////////
