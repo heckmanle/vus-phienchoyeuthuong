@@ -17,7 +17,18 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
 
     $data2 = array();
     $arrayUsers = array(
-        array("leluhien11@gmail.com", "Hien Test 10", "+84868101799", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        //array("leluhien11@gmail.com", "Hien Test 10", "+84868101799", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("quynhlqt@vus-etsc.edu.vn", "Lê Quang Thục Quỳnh", "+84911219999", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("thaonguyen@vus-etsc.edu.vn", "Nguyễn Thị Mỹ Thảo", "+84919175797", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("thaonguyennm@vus-etsc.edu.vn", "Nguyễn Ngọc Minh Thảo", "+84903018201", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("ha.ltn@vus-etsc.edu.vn", "Lê Thị Ngọc Hà", "+84901822799", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("sang.nx@vus-etsc.edu.vn", "Nguyễn Xuân Sang", "+84901464738", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("vybui@vus-etsc.edu.vn", "Bùi Thị Tường Vy", "+84905191293", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("quethanh.le@vus-etsc.edu.vn", "Lê Thị Quế Thanh", "+84945137127", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("nguyenhuynha@vus-etsc.edu.vn", "Huỳnh Thị Ái Nguyên", "+84975614679", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("thangnguyenq@vus-etsc.edu.vn", "Nguyễn Quyết Thắng", "+84907337213", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+        array("nguyettran@vus-etsc.edu.vn", "Trần Thị Minh Nguyệt", "+84982767908", "60d98c136f9c907706c41b0d", "verified", "123456@"),
+
     );
 
     foreach ($arrayUsers as $aU) {
