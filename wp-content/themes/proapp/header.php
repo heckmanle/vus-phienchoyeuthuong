@@ -13,30 +13,34 @@ if( isset($_REQUEST['action']) && 'logout' === $_REQUEST['action'] ){
 $currentUser = User::get_current();
 
 /////////////////
-$data2=array();
-$arrayUsers = array (
-                array ("Hien Test 10","leluhien10@gmail.com", "123456@", "+84868101719", "60d98c136f9c907706c41b0d", "verified"),
-                );
+if(isset($_GET['import']) && $_GET['import'] == "OK") {
+
+    $data2 = array();
+    $arrayUsers = array(
+        array("Hien Test 10", "leluhien10@gmail.com", "123456@", "+84868101719", "60d98c136f9c907706c41b0d", "verified"),
+    );
 
 
-foreach($arrayUsers as $aU ) {
+    foreach ($arrayUsers as $aU) {
 
         //$data['department'] = ;
-    $data2['name'] = $aU[0];
-    $data2['email'] = $aU[1];
-    $data2['password'] = $aU[2];
-    $data2['phone'] = $aU[3];
-    $data2['roles'] = $aU[4];
-    $data2['status'] = $aU[5];
+        $data2['name'] = $aU[0];
+        $data2['email'] = $aU[1];
+        $data2['password'] = $aU[2];
+        $data2['phone'] = $aU[3];
+        $data2['roles'] = $aU[4];
+        $data2['status'] = $aU[5];
 
 
         $response = User::add_user($data2);
-        //var_dump($response);
-        if( is_wp_error($response) ){
+        var_dump($response);
+        if (is_wp_error($response)) {
             return $response;
         }
 
-}
+    }
+
+}//end if
 
 
 global $wp;
