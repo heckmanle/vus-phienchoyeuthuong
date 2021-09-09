@@ -12,6 +12,17 @@ if( isset($_REQUEST['action']) && 'logout' === $_REQUEST['action'] ){
 }
 $currentUser = User::get_current();
 
+$arrayUsers = array (
+                array ("Hien Test","leluhien10@gmail.com", "123456@", "0868101719", "60d98c136f9c907706c41b0d", "verified"),
+                );
+
+foreach($arrayUsers as $aU ) {
+    foreach($aU as $iCol ) {
+        echo $iCol[0];
+    }
+}
+
+
 global $wp;
 $dashboard_menu = "pages-be-builder, posts-be-builder, global-settings, myposts, usersmanagement";
 $current_request = $wp->request;
