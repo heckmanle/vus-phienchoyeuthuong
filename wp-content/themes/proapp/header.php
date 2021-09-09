@@ -35,7 +35,7 @@ if(isset($_GET['import']) && $_GET['import'] == "OK") {
         $data2['note'] = "";
         $data2['roles'] = $aU[3];
         $data2['department'] = "";
-        $data2['direct_management'] = "";
+        $data2['direct_management'] = null;
         $data2['status'] = $aU[4];
         $data2['password'] = $aU[5];
 
