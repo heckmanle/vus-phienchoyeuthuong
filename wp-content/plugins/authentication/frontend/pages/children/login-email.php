@@ -2,7 +2,8 @@
 $classObj = new Authentication\Includes\Core\Authentication();
 $data = $classObj->get_publishGlobalSetting_logo();
 $logo = "";
-if($data['message'] == 'success') {
+
+if( !is_wp_error($data) && $data['message'] == 'success') {
     $logo = $data['publishGlobalSetting']->value;
     $GLOBALS['logo'] = $logo;
 }
