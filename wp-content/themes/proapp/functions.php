@@ -7579,6 +7579,7 @@ function _ajax_ttht_booking($data, $ajax){
     $tbl_sl = $data['tbl_sl'] ?? [];
 	$your_point = 0;
 	$your_submit = [];
+	$zone = [];
     if( $tick ){
 		$products = \DIVI\Includes\Core\Product::products();
 		if( is_wp_error($products) ){
@@ -7586,7 +7587,7 @@ function _ajax_ttht_booking($data, $ajax){
 		}
 		$products = array_group_by($products, 'id');
 		$products = array_map('array_shift', $products);
-        foreach ($tick as $pro_id){
+        foreach ($tick as $stt => $pro_id){
             if( isset($products[$pro_id]) ){
                 $_product = $products[$pro_id];
                 if(  $_product['product_seo_description'] == "N" ){
@@ -7594,6 +7595,7 @@ function _ajax_ttht_booking($data, $ajax){
                 }else{
 					$amount = 1;
                 }
+				$zone[] = "stt:{$stt}@product_id:{$pro_id}";
                 if( isset($tbl_text_conguoibenh[$pro_id]) && $tbl_text_conguoibenh[$pro_id] ){
 					$text = nl2br($tbl_text_conguoibenh[$pro_id]);
 					$text = site_sanitize_output($text);
@@ -7608,6 +7610,11 @@ function _ajax_ttht_booking($data, $ajax){
     }else{
         $your_submit = '';
     }
+    if( !empty($zone) ){
+		$zone = implode('||', $zone);
+    }else{
+		$zone = '';
+    }
 	$your_point = (string)$your_point;
 	$your_request = $note_1 . "<br>" . $note_2;
     $id = $currentUser['id'];
@@ -7615,7 +7622,7 @@ function _ajax_ttht_booking($data, $ajax){
     $your_comment = nl2br($your_comment);
     $your_request = site_sanitize_output($your_request);
 	$your_comment = site_sanitize_output($your_comment);
-    $compact = compact( 'your_point', 'your_comment', 'your_request', 'your_submit');
+    $compact = compact( 'your_point', 'your_comment', 'your_request', 'your_submit', 'zone');
     $response = \DIVI\Includes\Core\User::update_user($id, $compact);
 	return $response;
 }

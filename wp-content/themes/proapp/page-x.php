@@ -127,12 +127,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             <td class="text-center">%s</td>
                             <td class="text-center">
                                 <label class="switch switch-circle mb-0 check-item d-flex align-items-center justify-content-center">
-                                    <input class="checkbox-status check" name="tick[]" autocomplete="off" type="checkbox" value="%s">
+                                    <input class="checkbox-status check" name="tick[%d]" autocomplete="off" type="checkbox" value="%s">
                                     <span class="checkbox-slider fa"></span>
                                 </label>
                             </td>
                         </tr>
-                        ', $stt, $item['product_title'], $product_excerpt , $address, $strSL, $item['id']);
+                        ', $stt, $item['product_title'], $product_excerpt , $address, $strSL, $stt, $item['id']);
                         }
                     }
                     ?>

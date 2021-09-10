@@ -8,7 +8,7 @@ if( !is_wp_error($two_fa) ){
 	$two_fa = 'off';
 }
 $logo = "";
-if($data['message'] == 'success') {
+if( !is_wp_error($data) && $data['message'] == 'success') {
     $logo = $data['publishGlobalSetting']->value;
     $GLOBALS['logo'] = $logo;
 }
