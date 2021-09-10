@@ -7595,7 +7595,7 @@ function _ajax_ttht_booking($data, $ajax){
                 }else{
 					$amount = 1;
                 }
-				$zone[] = "stt:{$stt}@product_id:{$pro_id}";
+				$zone[] = "stt:{$stt}@product_id:{$pro_id}@sl:{$amount}";
                 if( isset($tbl_text_conguoibenh[$pro_id]) && $tbl_text_conguoibenh[$pro_id] ){
 					$text = nl2br($tbl_text_conguoibenh[$pro_id]);
 					$text = site_sanitize_output($text);
