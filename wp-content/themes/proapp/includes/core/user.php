@@ -28,6 +28,10 @@ class User
 			'note',
 			'status',
 		],
+        'your_point',
+        'your_comment',
+        'your_submit',
+        'your_request',
 		'status',
 		'last_login'
 	];
