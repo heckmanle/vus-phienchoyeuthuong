@@ -69,7 +69,9 @@ p.val { color: #000 !important }
 .alert-dismissible .close { padding: 0;}
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after { background-color: #222f6e;}
 .header__pane.ml-auto {margin-left: 20px !important;}
-.bg-info { background-color: #222f6e !important; }
+.bg-info { background-color: #f8f8f8 !important;
+    width: 99%;
+    margin: 2px !important;}
 .bg-danger { background-color: #fff !important; }
 .icon-wrapper { width: 30px; height: 30px;}
 .number-notification { width: 18px;height: 18px;border: 1px solid #fff; position: absolute;right: 0;z-index: 99;background: #fff; border-radius: 60px;
@@ -89,7 +91,10 @@ button.icon { margin-left: 18px; background-color: #ff144c !important; border-ra
 .icon-wrapper i { color: #fff; font-size: 1.2rem;}
 .ion-android-apps::before { color: #fff; }
 .app-main .app-main__outer { z-index: 9; padding-left: unset !important; max-width: 1170px; margin: 0 auto; }
-.widget-content .widget-content-left .widget-heading { opacity: .8; font-weight: bold;font-family: ASC-Regular !important;color: #fff;
+.widget-content .widget-content-left .widget-heading { opacity: .8; font-weight: bold;font-family: ASC-Regular !important;color: #000;
+}
+.dropdown-menu-header {
+    color: #000 !important;
 }
 .bx {background: #F8FAFB; min-height: 200px; position: relative;}
 .bx img {
@@ -460,6 +465,106 @@ display: none !important;
     background: #fff !important;
     }
 
+/************************ Users management ************************/
+.wrapper-layout-user-management .bg-heavy-rain {
+    background-image: unset !important;
+}
+.wrapper-layout-user-management .form-wizard-content .col-md-3 {
+    flex: 0 0 33%;
+    max-width: 33%;
+}
+.wrapper-layout-user-management form .form-group input[type="text"],
+.wrapper-layout-user-management input.text,
+.wrapper-layout-user-management input.title,
+.wrapper-layout-user-management input[type="email"],
+.wrapper-layout-user-management input[type="password"],
+.wrapper-layout-user-management input[type="tel"],
+.wrapper-layout-user-management input[type="text"],
+.wrapper-layout-user-management select,
+.wrapper-layout-user-management textarea {
+    background-color: #fff;
+    border: 1px solid #bbb !important;
+    padding: 2px;
+    color: #4e4e4e;
+    height: 40px !important;
+    position: relative;
+    padding: 0 10px;
+    width:100% !important;
+}
+.wrapper-layout-user-management .position-relative.user {position: relative;}
+.wrapper-layout-user-management .fa-eye {
+    position: absolute;
+    top: 36px;
+    right: 20px;
+}
+.wrapper-layout-user-management .select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    user-select: none;
+    -webkit-user-select: none;
+    border-color: #bbb !important;
+}
+.wrapper-layout-user-management .phone_code {
+
+    flex: 10% !important;
+    width: 42px;
+    margin-left: 16px;
+}
+.wrapper-layout-user-management .phone_number {
+    flex: 0 0 62%;
+    max-width: 62%;
+    margin-left: -13px;
+}
+.wrapper-layout-user-management .birthdate {
+    position: relative;
+}
+.wrapper-layout-user-management .birthdate .datepicker-trigger {
+    position: absolute;
+    right: 0;
+    height: 40px;
+}
+.app-inner-layout .wrapper-layout-user-management  .app-inner-layout__sidebar.card {
+    box-shadow: 0 0 0 0 transparent;
+    border-radius: 0;
+    background: #fff  !important;
+    border: 0;
+    border-right-color: currentcolor;
+    border-right-style: none;
+    border-right-width: 0px;
+    border-left-color: currentcolor;
+    border-left-style: none;
+    border-left-width: 0px;
+    border-right: #e9ecef solid 1px  !important;
+    border-left: #fff solid 1px !important;
+}
+table#table-users.table-bordered.dataTable tbody td {
+    border-bottom-width: 0;
+    color: #000;
+    font-size: 16px;
+}
+.page-template-page-usersmanagement .u_more {
+    margin: 0;
+    border-top: 1px solid #ddd;
+}
+.page-template-page-usersmanagement .page-title-heading h3 {
+    margin: 0;
+    margin-bottom: 0px;
+    margin-bottom: 20px;
+}
+.page-template-page-usersmanagement .u_comm {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -ms-border-radius: 10px;
+    color: #000;
+}
+.u_more .row {
+    margin: 0;
+}
+/************************ END Users management ************************/
 
 @media only screen and (max-width: 768px) {
     .home .login_text_code .et_pb_widget_area_left {width:100% !important;}

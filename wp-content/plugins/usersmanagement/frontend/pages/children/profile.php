@@ -125,7 +125,7 @@ wp_enqueue_style('plugin-user-management');
                                             <div class="col-md-3">
                                                 <div class="position-relative form-group"><label for="exampleZip" class="">Email <span class="txtred">(*)</span></label><input name="email" data-is-validation="true" data-rule-required="true" data-msg-required="Email không được để trống" id="exampleZip" type="email" class="form-control" value="<?php echo $email; ?>"></div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3 birthdate">
                                                 <label for="exampleAddress2" class="">Ngày sinh</label>
                                                 <div class="input-group">
                                                     <input type="text" name="birthdate" class="form-control" data-toggle="datepicker-icon" placeholder="dd/mm/yyyy"  value="<?php echo $birthdate; ?>">
@@ -253,10 +253,41 @@ wp_enqueue_style('plugin-user-management');
 
                                     <button type="submit" class="mt-2 btn-shadow btn-wide btn-pill btn-hover-shine btn btn-primary">Cập nhật</button>
                                 </div>
+
+                                <?php if($user['roles'][0]['role_name'] == "admin") { ?>
+                                <div class="u_more">
+                                    <div class="form-wizard-content frmmodal  p-4">
+                                        <div class="row page-title-heading">
+                                            <h3>THÔNG TIN HỖ TRỢ</h3>
+                                        </div>
+                                        <div class="row page-title-heading">
+                                            <h4>Câu chuyện chia sẻ</h4>
+                                        </div>
+                                        <div class="row u_comm">
+                                            <?php echo $user['your_comment'];?>
+                                        </div>
+                                        <div class="row page-title-heading pt-4">
+                                            <h4>Thông tin của tôi:</h4>
+                                        </div>
+                                        <div class="row u_comm">
+                                            <?php echo $user['your_request'];?>
+                                        </div>
+                                        <div class="row page-title-heading pt-4">
+                                            <h4>Tiêu chí:</h4>
+                                        </div>
+                                        <div class="row u_comm">
+                                            <?php echo $user['your_point'] . "</br>" .  $user['your_submit'];?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php } ?>
                             </div>
+
                         </div>
 
                     </form>
+
+
                 </div>
             </div>
         </div>
