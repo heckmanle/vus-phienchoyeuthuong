@@ -254,6 +254,7 @@ wp_enqueue_style('plugin-user-management');
                                     <button type="submit" class="mt-2 btn-shadow btn-wide btn-pill btn-hover-shine btn btn-primary">Cập nhật</button>
                                 </div>
 
+                                <?php if($user['roles'][0]['role_name'] == "admin") { ?>
                                 <div class="u_more">
                                     <div class="form-wizard-content frmmodal  p-4">
                                         <div class="row page-title-heading">
@@ -279,6 +280,7 @@ wp_enqueue_style('plugin-user-management');
                                         </div>
                                     </div>
                                 </div>
+                                <?php } ?>
                             </div>
 
                         </div>
