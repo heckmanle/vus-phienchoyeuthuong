@@ -32,6 +32,7 @@ class User
         'your_comment',
         'your_submit',
         'your_request',
+        'zone',
 		'status',
 		'last_login'
 	];

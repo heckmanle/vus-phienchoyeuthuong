@@ -273,11 +273,60 @@ wp_enqueue_style('plugin-user-management');
                                             <?php echo $user['your_request'];?>
                                         </div>
                                         <div class="row page-title-heading pt-4">
-                                            <h4>Tiêu chí:</h4>
+                                            <h4>Tiêu chí (điểm):</h4>
                                         </div>
                                         <div class="row u_comm">
-                                            <?php echo $user['your_point'] . "</br>" .  $user['your_submit'];?>
+                                            <?php echo $user['your_point']; //$user['your_submit'];?>
                                         </div>
+                                        <div class="row page-title-heading pt-4">
+                                            <h4>Tiêu chí (chọn):</h4>
+                                        </div>
+                                        <div class="row">
+                                            <table style="width: 100%;max-width: 668px;padding: 10px !important;background: #f7f7f7;">
+                                            <?php
+                                            $fields = [
+                                                'id',
+                                                'product_code',
+                                                'product_title',
+                                            ];
+                                            $tcStr = $user['zone'];
+                                            $tcArr = explode("||", $tcStr); //var_dump($tcArr);
+                                            if(count($tcArr) > 0) {
+                                            foreach($tcArr as $tc) {
+                                                ?>
+                                                <tr>
+                                                    <?php
+                                                    //echo $tc;
+                                                    $tcArrSub = explode("@", $tc);
+                                                    $product_title = "";
+                                                    if(count($tcArrSub) > 0) {
+                                                        $itc = 0;
+                                                        foreach($tcArrSub as $tcs) {
+                                                        if($itc == 1) {
+                                                            $tcArrPro = explode(":", $tcs);
+                                                            $prod = \DIVI\Includes\Core\Product::get_by_id($tcArrPro[1], $fields);
+                                                            if($prod['product_title'] == "Có người bệnh") {
+                                                                $product_title = $prod['product_title'] . "</br>" . $user['your_submit'];
+                                                            } else {
+                                                                $product_title = $prod['product_title'];
+                                                            }
+                                                        }
+                                                    ?>
+
+                                                    <?php $itc ++;
+                                                    }
+                                                    } ?>
+                                                    <td style="border: 1px solid #ddd;padding: 10px;"><?php echo $tcArrSub[0];?></td>
+                                                    <td style="border: 1px solid #ddd;padding: 10px;"><?php echo $product_title;?></td>
+                                                    <td style="border: 1px solid #ddd;padding: 10px;"><?php echo $tcArrSub[2];?></td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            }
+                                            ?>
+                                            </table>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <?php } ?>
