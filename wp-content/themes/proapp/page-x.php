@@ -93,7 +93,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         <th class="text-center th-col-2">ĐỊNH NGHĨA</th>
                         <th class="text-center th-col-3">TIÊU CHÍ</th>
                         <th class="text-center th-col-4">SL</th>
-                        <th class="text-center th-col-5">TICK ĐỂ CHỌN</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -125,20 +124,21 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             <td class="text-center">%s</td>
                             <td class="text-center">%s</td>
                             <td class="text-center">%s</td>
-                            <td class="text-center">
-                                <label class="switch switch-circle mb-0 check-item d-flex align-items-center justify-content-center">
-                                    <input class="checkbox-status check" name="tick[%d]" autocomplete="off" type="checkbox" value="%s">
-                                    <span class="checkbox-slider fa"></span>
-                                </label>
-                            </td>
                         </tr>
-                        ', $stt, $item['product_title'], $product_excerpt , $address, $strSL, $stt, $item['id']);
+                        ', $stt, $item['product_title'], $product_excerpt , $address, $strSL);
                         }
                     }
                     ?>
 
                     </tbody>
                 </table>
+            </div>
+            <div class="form-group">
+                <label class="switch switch-circle mb-0 check-item d-flex align-items-center">
+                    <span class="mr-2"><?php _e('Bạn không thuộc tiêu chí trên', REAL_ESTATE_PRODUCTS_LANG_DOMAIN); ?></span>
+                    <input class="checkbox-status check tick-is-empty" name="tick" autocomplete="off" type="checkbox" value="1">
+                    <span class="checkbox-slider fa"></span>
+                </label>
             </div>
             <div class="form-group">
                 <label><?php _e('Chia sẻ thêm câu chuyện của bạn'); ?>: </label>
@@ -209,6 +209,16 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
             </div>
         </div>
     </div>
+    <div id="modal-is-empty" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-close-inside modal-dialog-centered ">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    <h4 class="mb-0 error"><?php _e('Nhập số lượng tiêu chí chọn') ?></h4>
+                </div>
+            </div>
+        </div>
+    </div>
 <script>
     const TTHT_IMAGE_LOADING = {
         message: '<div class="ball-clip-rotate-multiple"> <div></div><div></div></div>',
@@ -260,8 +270,20 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
         }
         $('.btn-submit-ttht').click(function (ev){
             ev.preventDefault();
-            let $this = $(this), $form = $this.closest('form');
-            $('#modal-step-1').modal();
+            let $this = $(this), $form = $this.closest('form'),
+                $tbl_col_sl = $('.tbl_col_sl', $form), tick_is_empty = $('.tick-is-empty', $form).prop('checked'),
+                point = 0;
+            $tbl_col_sl.each(function (){
+                let val = $(this).val();
+                val = parseFloat(val);
+                val = isNaN(val) ? 0 : val;
+                point += val;
+            });
+            if( point === 0 && !tick_is_empty ){
+                $('#modal-is-empty').modal();
+            }else{
+                $('#modal-step-1').modal();
+            }
         });
         $('#modal-step-1 .modal-btn-action').click(function(ev){
             ev.preventDefault();

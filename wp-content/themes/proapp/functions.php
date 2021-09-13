@@ -7571,7 +7571,7 @@ function _ajax_ttht_booking($data, $ajax){
 	if( !$currentUser ){
 	    return new WP_Error(403, __('Vui lòng đăng nhập'));
     }
-    $tick = $data['tick'] ?? [];
+    $tick = $data['tick'] ?? 0;
     $your_comment = $data['store'] ?? '';
     $note_1 = $data['note_1'] ?? '';
     $note_2 = $data['note_2'] ?? '';
@@ -7585,25 +7585,31 @@ function _ajax_ttht_booking($data, $ajax){
 		if( is_wp_error($products) ){
 			$products = [];
 		}
-		$products = array_group_by($products, 'id');
-		$products = array_map('array_shift', $products);
-        foreach ($tick as $stt => $pro_id){
-            if( isset($products[$pro_id]) ){
-                $_product = $products[$pro_id];
-                if(  $_product['product_seo_description'] == "N" ){
+//		$products = array_group_by($products, 'id');
+//		$products = array_map('array_shift', $products);
+        if( $products ){
+			$stt = 0;
+            foreach ($products as $pro){
+				$stt++;
+				$pro_id = $pro['id'] ?? '';
+				if(  $pro['product_seo_description'] == "N" ){
 					$amount = isset($tbl_sl[$pro_id]) ? $tbl_sl[$pro_id] : 0;
-                }else{
+					$amount = is_numeric($amount) ? $amount : 0;
+				}else{
 					$amount = 1;
-                }
+				}
 				$zone[] = "stt:{$stt}@product_id:{$pro_id}@sl:{$amount}";
-                if( isset($tbl_text_conguoibenh[$pro_id]) && $tbl_text_conguoibenh[$pro_id] ){
+				if( isset($tbl_text_conguoibenh[$pro_id]) && $tbl_text_conguoibenh[$pro_id] ){
 					$text = nl2br($tbl_text_conguoibenh[$pro_id]);
 					$text = site_sanitize_output($text);
 					$your_submit[] = $text;
-                }
-				$your_point += $amount * $_product['product_seo_keywords'];
+				}
+				$your_point += $amount * $pro['product_seo_keywords'];
             }
         }
+    }
+    if( $your_point == 0 && !$tick ){
+        return new WP_Error(401, __('Nhập số lượng tiêu chí chọn', REAL_ESTATE_PRODUCTS_LANG_DOMAIN));
     }
     if( $your_submit ){
 		$your_submit = implode('<br>', $your_submit);
@@ -7622,7 +7628,8 @@ function _ajax_ttht_booking($data, $ajax){
     $your_comment = nl2br($your_comment);
     $your_request = site_sanitize_output($your_request);
 	$your_comment = site_sanitize_output($your_comment);
-    $compact = compact( 'your_point', 'your_comment', 'your_request', 'your_submit', 'zone');
+	$note = 'SUBMITTED';
+    $compact = compact( 'your_point', 'your_comment', 'your_request', 'your_submit', 'zone', 'note');
     $response = \DIVI\Includes\Core\User::update_user($id, $compact);
 	return $response;
 }
