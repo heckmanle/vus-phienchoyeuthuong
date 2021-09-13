@@ -7571,6 +7571,10 @@ function _ajax_ttht_booking($data, $ajax){
 	if( !$currentUser ){
 	    return new WP_Error(403, __('Vui lòng đăng nhập'));
     }
+	$currentUserNote = $currentUser['note'] ?? '';
+	if( $currentUserNote == 'SUBMITTED' ){
+		return new WP_Error(403, __('Bạn đã nhập thông tin này.'));
+    }
     $tick = $data['tick'] ?? 0;
     $your_comment = $data['store'] ?? '';
     $note_1 = $data['note_1'] ?? '';
