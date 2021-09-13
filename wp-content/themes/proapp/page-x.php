@@ -89,7 +89,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                 <table class="table table-style-main">
                     <thead>
                     <tr>
-                        <th class="text-center th-col-1">STT</th>
+                        <th class="text-center th-col-1" style="font-size: 8px;">STT</th>
                         <th class="text-center th-col-2">TIÊU CHÍ</th>
                         <th class="text-center th-col-2">ĐỊNH NGHĨA</th>
                         <th class="text-center th-col-3">TIÊU CHÍ</th>
@@ -120,7 +120,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
                             echo sprintf('
                         <tr>
-                            <td class="text-center" style="font-size: 8px;">%d.</td>
+                            <td class="text-center">%d.</td>
                             <td class="text-uppercase text-center">%s</td>
                             <td class="text-center">%s</td>
                             <td class="text-center">%s</td>
