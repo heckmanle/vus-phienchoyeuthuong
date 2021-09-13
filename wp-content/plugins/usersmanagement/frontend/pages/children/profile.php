@@ -257,7 +257,7 @@ wp_enqueue_style('plugin-user-management');
                                     <button type="submit" class="mt-2 btn-shadow btn-wide btn-pill btn-hover-shine btn btn-primary">Cập nhật</button>
                                 </div>
 
-                                <?php if(!\SME\Includes\Core\User::has_role($currentUser, ['admin'])){ ?>
+                                <?php if(\SME\Includes\Core\User::has_role($currentUser, ['admin'])){ ?>
                                 <div class="u_more">
                                     <div class="form-wizard-content frmmodal  p-4">
                                         <div class="row page-title-heading">
