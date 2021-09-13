@@ -7580,34 +7580,33 @@ function _ajax_ttht_booking($data, $ajax){
 	$your_point = 0;
 	$your_submit = [];
 	$zone = [];
-    if( $tick ){
-		$products = \DIVI\Includes\Core\Product::products();
-		if( is_wp_error($products) ){
-			$products = [];
-		}
+    $products = \DIVI\Includes\Core\Product::products();
+    if( is_wp_error($products) ){
+        $products = [];
+    }
 //		$products = array_group_by($products, 'id');
 //		$products = array_map('array_shift', $products);
-        if( $products ){
-			$stt = 0;
-            foreach ($products as $pro){
-				$stt++;
-				$pro_id = $pro['id'] ?? '';
-				if(  $pro['product_seo_description'] == "N" ){
-					$amount = isset($tbl_sl[$pro_id]) ? $tbl_sl[$pro_id] : 0;
-					$amount = is_numeric($amount) ? $amount : 0;
-				}else{
-					$amount = 1;
-				}
-				$zone[] = "stt:{$stt}@product_id:{$pro_id}@sl:{$amount}";
-				if( isset($tbl_text_conguoibenh[$pro_id]) && $tbl_text_conguoibenh[$pro_id] ){
-					$text = nl2br($tbl_text_conguoibenh[$pro_id]);
-					$text = site_sanitize_output($text);
-					$your_submit[] = $text;
-				}
-				$your_point += $amount * $pro['product_seo_keywords'];
+    if( $products ){
+        $stt = 0;
+        foreach ($products as $pro){
+            $stt++;
+            $pro_id = $pro['id'] ?? '';
+            if(  $pro['product_seo_description'] == "N" ){
+                $amount = isset($tbl_sl[$pro_id]) ? $tbl_sl[$pro_id] : 0;
+                $amount = is_numeric($amount) ? $amount : 0;
+            }else{
+                $amount = 1;
             }
+            $zone[] = "stt:{$stt}@product_id:{$pro_id}@sl:{$amount}";
+            if( isset($tbl_text_conguoibenh[$pro_id]) && $tbl_text_conguoibenh[$pro_id] ){
+                $text = nl2br($tbl_text_conguoibenh[$pro_id]);
+                $text = site_sanitize_output($text);
+                $your_submit[] = $text;
+            }
+            $your_point += $amount * $pro['product_seo_keywords'];
         }
     }
+
     if( $your_point == 0 && !$tick ){
         return new WP_Error(401, __('Nhập số lượng tiêu chí chọn', REAL_ESTATE_PRODUCTS_LANG_DOMAIN));
     }

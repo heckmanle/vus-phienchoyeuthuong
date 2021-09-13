@@ -8,6 +8,7 @@ if( !$currentUser || is_wp_error($currentUser) ){
     wp_redirect(site_url('/'));
     die;
 }
+$currentUserNote = $currentUser['note'] ?? '';
 $products = \DIVI\Includes\Core\Product::products();
 if( is_wp_error($products) ){
     $products = [];
@@ -145,11 +146,13 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                 <textarea class="form-control" name="store"></textarea>
             </div>
             <?php if($currentUser): ?>
-            <div class="text-right">
-                <button class="btn btn-primary btn-submit-ttht" type="submit">
-                    <?php _e('Cập nhật'); ?>
-                </button>
-            </div>
+                <?php if( $currentUserNote != 'SUBMITTED'): ?>
+                <div class="text-right">
+                    <button class="btn btn-primary btn-submit-ttht" type="submit">
+                        <?php _e('Cập nhật'); ?>
+                    </button>
+                </div>
+                <?php endif; ?>
             <?php else: ?>
             <div><?php _e('Bạn chưa được xác thực đăng nhập. Vui lòng') ?> <a href="<?php echo site_url('/authentication/') ?>" class="redirect-login btn btn-primary"><?php _e('Đăng nhập'); ?></a></div>
             <?php endif; ?>
