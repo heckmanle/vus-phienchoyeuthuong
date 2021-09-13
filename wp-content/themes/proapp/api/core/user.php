@@ -86,6 +86,7 @@ class User
 					'note',
 					'status',
 				],
+				'note',
 				'status',
 			]
 		], true);
