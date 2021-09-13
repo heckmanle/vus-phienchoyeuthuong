@@ -93,7 +93,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         <th class="text-center th-col-2">TIÊU CHÍ</th>
                         <th class="text-center th-col-2">ĐỊNH NGHĨA</th>
                         <th class="text-center th-col-3">TIÊU CHÍ</th>
-                        <th class="text-center th-col-4">SL</th>
+                        <th class="text-center th-col-4">SỐ LƯỢNG</th>
                     </tr>
                     </thead>
                     <tbody>
