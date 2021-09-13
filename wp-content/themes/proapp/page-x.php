@@ -120,7 +120,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
                             echo sprintf('
                         <tr>
-                            <td class="text-center">%d</td>
+                            <td class="text-center" style="font-size: 8px;">%d.</td>
                             <td class="text-uppercase text-center">%s</td>
                             <td class="text-center">%s</td>
                             <td class="text-center">%s</td>
