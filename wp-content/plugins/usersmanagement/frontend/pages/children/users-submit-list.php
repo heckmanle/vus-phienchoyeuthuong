@@ -5,12 +5,21 @@
 $page_user = get_page_by_path(__('Usersmanagement', USERSMANAGEMENT_LANG_DOMAIN));
 $link = get_the_permalink($page_user);
 $userlist = \SME\Includes\Core\User::users();
+$userlistSubmit = array();
+$cnt = count($userlist);
+for($i = 1; $i < $cnt; $i ++) {
+
+        if ($userlist[$i]['your_point'] != "") {
+            $userlistSubmit[$i] = $userlist[$i];
+        }
+    
+}
 //// begin export data
 if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
 
     // select users list
     $dataList=array();
-    if(!empty($userlist)) {
+    if(!empty($userlistSubmit)) {
         $i = 0;
         $stt = 1;
         $tc_1 = "'- Người NGOÀI độ tuổi lao động, không có thu nhập + Nam dưới 15 tuổi, hoặc trên 60 tuổi + Nữ dưới 15 tuổi, hoặc trên 55 tuổi";
@@ -30,8 +39,8 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
         $dataList[$r] = array("STT","Tên", "Điện thoại", "Email", "Tình trạng", $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, " Tổng Điểm", "Thông tin ghi số tài khoản / khác");
 
         $r = 2;
-        foreach ($userlist as $item) {
-            if ($i > 0) {
+        foreach ($userlistSubmit as $item) {
+
                 if ($item['your_point'] != "") {
                     $trangthai = "Đang xử lý";
                     if ($item['note'] == "DONE") { $trangthai="DONE"; }
@@ -141,7 +150,7 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
 
                     $dataList[$r] = array($stt, $item["name"], "'".$item["phone"], $item["email"], $trangthai, $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, $item['your_point'], $your_request, $your_comment);
                 }
-            }
+            
             $i++;
             $r ++;
             $stt ++;
@@ -220,10 +229,10 @@ get_header();
                         </thead>
                         <tbody>
                         <?php
-                        if(!empty($userlist)){ $i=0;
+                        if(!empty($userlistSubmit)){ $i=0;
                             $stt=1;
-                            foreach ($userlist as $item){
-                                if($i != 0) {
+                            foreach ($userlistSubmit as $item){
+
                                     if($item['your_point'] != "") {
                                     ?>
 
@@ -293,7 +302,7 @@ get_header();
                                     </tr>
 
                                     <?php
-                                    }
+
                                 }
                                 $stt ++;
                                 $i++;

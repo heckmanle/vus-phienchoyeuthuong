@@ -139,7 +139,53 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                 </table>
                 <?php
                 } else {
-                    echo "Mobile..";
+                 //   echo "Mobile..";
+                    ?>
+                <table class="table table-style-main">
+                    <thead>
+                    <tr>
+                        <th class="text-center th-col-1" style="font-size: 8px;">STT</th>
+                        <th class="text-center th-col-2">TIÊU CHÍ</th>
+                        <th class="text-center th-col-4">SỐ LƯỢNG</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    if( $products ){
+                        $stt = 1;
+                        $strSL = "";
+                        $product_excerpt = "";
+                        foreach ($products as $item){
+                            $stt++;
+                            $address = !empty($item['address']) && !is_null($item['address']) && $item['address'] != 'NULL' ? $item['address'] : '';
+
+                            if($item['product_slug'] == "co-nguoi-benh") {
+                                $product_excerpt = $item['product_excerpt'] . "<br/><textarea name='tbl_text_conguoibenh[{$item['id']}]' class='tbl_col_cngb'></textarea>";
+                            } else {
+                                $product_excerpt = $item['product_excerpt'];
+                            }
+
+                            if($item['product_seo_description'] == "N") {
+                                $strSL = "<input type='text' value='0' name='tbl_sl[{$item['id']}]' class='tbl_col_sl text-center'>";
+                            } else {
+                                $strSL = $item['product_seo_description'];
+                            }
+                            ?>
+                            <tr>
+                                <td class="text-center">%d.</td>
+                                <td class="text-uppercase text-center">%s</td>
+                                <td class="text-center">%s</td>
+                                <td class="text-center">%s</td>
+                                <td class="text-center">%s</td>
+                            </tr>
+                    <?php
+                        }
+                    }
+                    ?>
+
+                    </tbody>
+                </table>
+                    <?php
                 }
 
                 ?>
