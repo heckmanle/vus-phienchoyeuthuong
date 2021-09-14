@@ -308,7 +308,7 @@ wp_enqueue_style('plugin-user-management');
                                                         if($itc == 1) {
                                                             $tcArrPro = explode(":", $tcs);
                                                             $prod = \DIVI\Includes\Core\Product::get_by_id($tcArrPro[1], $fields);
-                                                            if($prod['product_title'] == "Có người bệnh") {
+                                                            if ($prod['product_title'] == "Mắc bênh khác (không phải Covid)") {
                                                                 $product_title = $prod['product_title'] . "</br>" . $user['your_submit'];
                                                             } else {
                                                                 $product_title = $prod['product_title'];

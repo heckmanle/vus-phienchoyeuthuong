@@ -12,15 +12,140 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
     $dataList=array();
     if(!empty($userlist)) {
         $i = 0;
+        $tc_1 = "'- Người NGOÀI độ tuổi lao động, không có thu nhập + Nam dưới 15 tuổi, hoặc trên 60 tuổi + Nữ dưới 15 tuổi, hoặc trên 55 tuổi";
+        $tc_2 = "'- Người TRONG độ tuổi lao động nhưng + KHÔNG CÓ khả năng lao động, hoặc + HẠN CHẾ khả năng lao động";
+        $tc_3 = "Thuê nhà ở chung với Gia Đình nhiều thành viên";
+        $tc_4 = "Thuê nhà trọ";
+        $tc_5 = "Nhập số lượng bé < 1 tuổi";
+        $tc_6 = "Nhập số bé từ 1 - 6 tuổi";
+        $tc_7 = "Người thân bị bệnh đang là người phụ thuộc Vui lòng nói rõ hơn tình trạng bệnh: ";
+        $tc_8 = "Bản thân đang bị bệnh Vui lòng nói rõ hơn tình trạng bệnh";
+        $tc_9 = "Có F0 trong gia đình đang sống chung";
+
+        $r = 0;
+        $dataList[$r] = array("","", "", "", "", "Có người phụ thuộc", "", "Tình trạng nơi ở ","","Có con nhỏ","", "Mắc bênh khác (không phải Covid)","", "Nhiễm Covid", " Tổng Điểm", "Thông tin của tôi", "Câu chuyện chia sẻ");
+
+        $r = 1;
+        $dataList[$r] = array("STT","Tên", "Điện thoại", "Email", "Tình trạng", $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, " Tổng Điểm", "Thông tin ghi số tài khoản / khác");
+
+        $r = 2;
         foreach ($userlist as $item) {
-            if ($i != 0) {
+            if ($i > -1) {
                 if ($item['your_point'] != "") {
-                    $dataList[] = array($item["name"], $item["phone"], $item['your_point']);
+                    $trangthai = "Đang xử lý";
+                    if ($item['note'] == "DONE") { $trangthai="DONE"; }
+
+                    //table list
+                    $fields = [
+                        'id',
+                        'product_code',
+                        'product_title',
+
+                    ];
+                    $tcStr = $item['zone'];
+                    $tcArr = explode("||", $tcStr); //var_dump($tcArr);
+                    $tieuchi = "";
+                    $product_title = "";
+                    $product_excerpt = "";
+                    if(count($tcArr) > 0) {
+                        $tc_1 = "";
+                        $tc_2 = "";
+                        $tc_3 = "";
+                        $tc_4 = "";
+                        $tc_5 = "";
+                        $tc_6 = "";
+                        $tc_7 = "";
+                        $tc_8 = "";
+                        $tc_9 = "";
+
+                        $tc_row = 0;
+                        foreach($tcArr as $tc) {
+                            //echo $tc;
+                            $tcArrSub = explode("@", $tc);
+
+                            if(count($tcArrSub) > 0) {
+                                $itc = 0;
+                                foreach ($tcArrSub as $tcs) {
+
+//                                    if ($itc == 1) {
+//                                        $tcArrPro = explode(":", $tcs);
+//                                        $prod = \DIVI\Includes\Core\Product::get_by_id($tcArrPro[1], $fields);
+//                                        if ($prod['product_title'] == "Mắc bênh khác (không phải Covid)") {
+//                                            $product_title = $prod['product_title'] . ", ghi rõ bệnh: " . $item['your_submit'];
+//                                        } else {
+//                                            $product_title = $prod['product_title'];
+//                                        }
+//                                    }
+
+                                    if ($tc_row == 0) {
+                                        $tcArrSubData = explode(":", $tcArrSub[2]);
+                                        $tc_1 = $tcArrSubData[1];
+                                    }
+
+                                    if ($tc_row == 1) {
+                                        $tcArrSubData = explode(":", $tcArrSub[2]);
+                                        $tc_2 = $tcArrSubData[1];
+                                    }
+
+                                    if ($tc_row == 2) {
+                                        $tcArrSubData = explode(":", $tcArrSub[2]);
+                                        $tc_3 = $tcArrSubData[1];
+                                    }
+
+                                    if ($tc_row == 3) {
+                                        $tcArrSubData = explode(":", $tcArrSub[2]);
+                                        $tc_4 = $tcArrSubData[1];
+                                    }
+
+                                    if ($tc_row == 4) {
+                                        $tcArrSubData = explode(":", $tcArrSub[2]);
+                                        $tc_5 = $tcArrSubData[1];
+                                    }
+
+                                    if ($tc_row == 5) {
+                                        $tcArrSubData = explode(":", $tcArrSub[2]);
+                                        $tc_6 = $tcArrSubData[1];
+                                    }
+
+                                    if ($tc_row == 6) {
+                                        $tcArrSubData = explode(":", $tcArrSub[2]);
+                                        $tc_7 = $tcArrSubData[1];
+                                    }
+
+                                    if ($tc_row == 7) {
+                                        $tcArrSubData = explode(":", $tcArrSub[2]);
+                                        $tc_8 = $tcArrSubData[1];
+                                    }
+
+                                    if ($tc_row == 8) {
+                                        $tcArrSubData = explode(":", $tcArrSub[2]);
+                                        $tc_9 = $tcArrSubData[1];
+                                    }
+
+
+                                    $itc++;
+                                }
+                            }
+                            //$tieuchi .= $product_title . " -- Số lượng " . $tcArrSub[2] ."\n";
+                            $tc_row ++;
+                        }
+
+                    }
+
+
+                    $your_request = str_replace("<br />", "\n", $item['your_request']);
+                    $your_request = str_replace("<br>", "\n", $your_request);
+
+                    $your_comment = str_replace("<br />", "\n", $item['your_comment']);
+
+                    $dataList[$r] = array($i, $item["name"], "'".$item["phone"], $item["email"], $trangthai, $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, $item['your_point'], $your_request, $your_comment);
                 }
             }
+            $i++;
+            $r ++;
         }
     }
-    var_dump($dataList);
+    //var_dump($dataList);
     //end list
 //    $list = array (
 //        array('aaa', 'bbb', 'ccc', 'dddd'),
@@ -28,8 +153,8 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
 //        array('"aaa"', '"bbb"')
 //    );
 
-    //download_send_headers("data_export_" . date("Y-m-d") . ".csv");
-    //echo array2csv($dataList);
+    download_send_headers("data_export_" . date("Y-m-d") . ".csv");
+    echo array2csv($dataList);
     die();
 
 }
@@ -78,7 +203,7 @@ get_header();
             <div class="resetpos pt-1">
 
                 <div class="dataTables_wrapper dt-bootstrap4">
-
+                    <a target="_blank" href="http://chiaseyeuthuong.vus.edu.vn/usersmanagement/?view=users-submit-list&exportdata=yes"> Export & Download Data </a>
                     <table id="table-users" class="mb-0 table table-hover table-striped table-bordered dataTable dtr-inline">
                         <thead>
                         <tr>
@@ -185,6 +310,8 @@ get_header();
                         </tr>
                         </tfoot>
                     </table>
+
+
                 </div>
             </div>
         </div>

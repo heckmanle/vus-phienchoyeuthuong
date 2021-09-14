@@ -7694,4 +7694,8 @@ function download_send_headers($filename) {
     // disposition / encoding on response body
     header("Content-Disposition: attachment;filename={$filename}");
     header("Content-Transfer-Encoding: binary");
+
+    header('Content-Encoding: UTF-8');
+    header('Content-type: text/csv; charset=UTF-8');
+    echo "\xEF\xBB\xBF"; // UTF-8 BOM
 }
