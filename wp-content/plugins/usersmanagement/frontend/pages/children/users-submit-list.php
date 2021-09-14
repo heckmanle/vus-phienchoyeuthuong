@@ -2,18 +2,6 @@
 /**
  * The template for displaying all pages
  */
-if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
-    $list = array (
-        array('aaa', 'bbb', 'ccc', 'dddd'),
-        array('123', '456', '789'),
-        array('"aaa"', '"bbb"')
-    );
-
-    download_send_headers("data_export_" . date("Y-m-d") . ".csv");
-    echo array2csv($list);
-    die();
-
-}
 get_header();
 #global $system_api, $core_usersmanagement_class;
 #$userlist=[];
@@ -180,5 +168,20 @@ $userlist = \SME\Includes\Core\User::users();
 <!-- End form container -->
 
 <?php
+//// begin export data
+if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
+    $list = array (
+        array('aaa', 'bbb', 'ccc', 'dddd'),
+        array('123', '456', '789'),
+        array('"aaa"', '"bbb"')
+    );
+
+    download_send_headers("data_export_" . date("Y-m-d") . ".csv");
+    echo array2csv($list);
+    die();
+
+}
+//// end export data
+
 wp_localize_script('usersmanagement-script', 'USERS', ['users' => $userlist]);
 get_footer(); ?>
