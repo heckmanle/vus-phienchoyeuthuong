@@ -9,13 +9,10 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
         array('"aaa"', '"bbb"')
     );
 
-    $fp = fopen('/home/vus-phienchoyeuthuong/export/file.csv', 'w');
+    download_send_headers("data_export_" . date("Y-m-d") . ".csv");
+    echo array2csv($list);
+    die();
 
-    foreach ($list as $fields) {
-        fputcsv($fp, $fields);
-    }
-
-    fclose($fp);
 }
 get_header();
 #global $system_api, $core_usersmanagement_class;
