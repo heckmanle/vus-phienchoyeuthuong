@@ -30,7 +30,7 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
 
         $r = 2;
         foreach ($userlist as $item) {
-            if ($i > -1) {
+            if ($i > 0) {
                 if ($item['your_point'] != "") {
                     $trangthai = "Đang xử lý";
                     if ($item['note'] == "DONE") { $trangthai="DONE"; }
