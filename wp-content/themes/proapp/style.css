@@ -564,6 +564,18 @@ table#table-users.table-bordered.dataTable tbody td {
 .u_more .row {
     margin: 0;
 }
+.cb.sorting_1 {
+    border-bottom-width: 0;
+    color: #000;
+    font-size: 16px;
+    text-align: right;
+    position: relative;
+}
+.sorting_1 .check-row {
+    position: absolute;
+    left: 10px;
+    top: 25px;
+}
 /************************ END Users management ************************/
 
 @media only screen and (max-width: 768px) {
