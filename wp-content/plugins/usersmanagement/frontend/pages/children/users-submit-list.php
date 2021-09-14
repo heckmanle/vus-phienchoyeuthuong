@@ -2,16 +2,31 @@
 /**
  * The template for displaying all pages
  */
+$page_user = get_page_by_path(__('Usersmanagement', USERSMANAGEMENT_LANG_DOMAIN));
+$link = get_the_permalink($page_user);
+$userlist = \SME\Includes\Core\User::users();
 //// begin export data
 if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
-    $list = array (
-        array('aaa', 'bbb', 'ccc', 'dddd'),
-        array('123', '456', '789'),
-        array('"aaa"', '"bbb"')
-    );
+
+    // select users list
+    $dataList=array();
+    if(!empty($userlist)){ $i=0;
+    foreach ($userlist as $item) {
+        if ($i != 0) {
+            if ($item['your_point'] != "") {
+                $dataList[] = array($item["name"], $item["phone"], $item['your_point']);
+            }
+        }
+    }
+    //end list
+//    $list = array (
+//        array('aaa', 'bbb', 'ccc', 'dddd'),
+//        array('123', '456', '789'),
+//        array('"aaa"', '"bbb"')
+//    );
 
     download_send_headers("data_export_" . date("Y-m-d") . ".csv");
-    echo array2csv($list);
+    echo array2csv($dataList);
     die();
 
 }
@@ -21,9 +36,6 @@ get_header();
 #$userlist=[];
 #$datalist = json_decode($core_usersmanagement_class->get_list(), true);
 #$userlist = $datalist['users_list'];
-$page_user = get_page_by_path(__('Usersmanagement', USERSMANAGEMENT_LANG_DOMAIN));
-$link = get_the_permalink($page_user);
-$userlist = \SME\Includes\Core\User::users();
 
 ?>
 <!-- Sidebar -->
