@@ -86,6 +86,10 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
             <input type="hidden" name="action" value="handle_ajax">
             <input type="hidden" name="func" value="ttht_booking">
             <div class="table-responsive table-res-style-main mb-5">
+                <?php
+                if ( !wp_is_mobile() ) {
+
+                ?>
                 <table class="table table-style-main">
                     <thead>
                     <tr>
@@ -133,6 +137,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
                     </tbody>
                 </table>
+                <?php
+                } else {
+                    echo "Mobile..";
+                }
+
+                ?>
             </div>
             <div class="form-group">
                 <label class="switch switch-circle mb-0 check-item d-flex align-items-center">

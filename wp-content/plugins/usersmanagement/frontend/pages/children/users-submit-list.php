@@ -12,6 +12,7 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
     $dataList=array();
     if(!empty($userlist)) {
         $i = 0;
+        $stt = 1;
         $tc_1 = "'- Người NGOÀI độ tuổi lao động, không có thu nhập + Nam dưới 15 tuổi, hoặc trên 60 tuổi + Nữ dưới 15 tuổi, hoặc trên 55 tuổi";
         $tc_2 = "'- Người TRONG độ tuổi lao động nhưng + KHÔNG CÓ khả năng lao động, hoặc + HẠN CHẾ khả năng lao động";
         $tc_3 = "Thuê nhà ở chung với Gia Đình nhiều thành viên";
@@ -138,11 +139,12 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
 
                     $your_comment = str_replace("<br />", "\n", $item['your_comment']);
 
-                    $dataList[$r] = array($i, $item["name"], "'".$item["phone"], $item["email"], $trangthai, $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, $item['your_point'], $your_request, $your_comment);
+                    $dataList[$r] = array($stt, $item["name"], "'".$item["phone"], $item["email"], $trangthai, $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, $item['your_point'], $your_request, $your_comment);
                 }
             }
             $i++;
             $r ++;
+            $stt ++;
         }
     }
     //var_dump($dataList);
@@ -219,13 +221,14 @@ get_header();
                         <tbody>
                         <?php
                         if(!empty($userlist)){ $i=0;
+                            $stt=1;
                             foreach ($userlist as $item){
                                 if($i != 0) {
                                     if($item['your_point'] != "") {
                                     ?>
 
                                     <tr>
-                                        <td class="cb"><input type="checkbox" class="check-row" name="uid[]" value="<?php echo $item['id']; ?>"><?php echo $i;?></td>
+                                        <td class="cb"><input type="checkbox" class="check-row" name="uid[]" value="<?php echo $item['id']; ?>"><?php echo $stt;?></td>
                                         <td>
                                             <a href="<?php echo add_query_arg(['view' => 'profile', 'uid' => $item['id']], $link); ?>">
                                                 <div class="widget-content p-0">
@@ -292,6 +295,7 @@ get_header();
                                     <?php
                                     }
                                 }
+                                $stt ++;
                                 $i++;
                             }
                         }
