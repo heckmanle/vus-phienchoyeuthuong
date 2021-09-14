@@ -15,7 +15,7 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
         foreach ($userlist as $item) {
             if ($i != 0) {
                 if ($item['your_point'] != "") {
-                    $dataList[$i-1] = array($item["name"], $item["phone"], $item['your_point']);
+                    $dataList[] = array($item["name"], $item["phone"], $item['your_point']);
                 }
             }
         }
@@ -28,8 +28,8 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
 //        array('"aaa"', '"bbb"')
 //    );
 
-    download_send_headers("data_export_" . date("Y-m-d") . ".csv");
-    echo array2csv($dataList);
+    //download_send_headers("data_export_" . date("Y-m-d") . ".csv");
+    //echo array2csv($dataList);
     die();
 
 }
