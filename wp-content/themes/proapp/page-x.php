@@ -153,10 +153,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                     <?php
                     if( $products ){
                         $stt = 1;
+
+                        $tbl_r = 0;
                         $strSL = "";
                         $product_excerpt = "";
                         foreach ($products as $item){
-                            $stt++;
+
                             $address = !empty($item['address']) && !is_null($item['address']) && $item['address'] != 'NULL' ? $item['address'] : '';
 
                             if($item['product_slug'] == "co-nguoi-benh") {
@@ -166,19 +168,36 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             }
 
                             if($item['product_seo_description'] == "N") {
-                                $strSL = "<input type='text' value='0' name='tbl_sl[{$item['id']}]' class='tbl_col_sl text-center'>";
+                                $strSL = "<span style='font-size: 13px;line-height: 17px !important;padding-top: 2px !important;display: flex;padding-bottom: 6px !important;'>{$address}</span><input type='text' value='0' name='tbl_sl[{$item['id']}]' class='tbl_col_sl text-center'>";
                             } else {
                                 $strSL = $item['product_seo_description'];
                             }
+
+                            $lbl_stt = "";
+                            $product_title = "";
+                            $stylex = "";
+                            if($tbl_r != 0 && $tbl_r != 2 && $tbl_r != 4 && $tbl_r != 6 && $tbl_r != 8) {
+                                $stt++;
+                            } else {
+                                $lbl_stt = $stt;
+                                $product_title = $item['product_title'];
+                                $stylex = "border-bottom: 1px solid #ddd;width: 100%;padding: 10px;text-transform: uppercase;";
+                            }
+
+                            //$item['product_title'], $product_excerpt , $address, $strSL);
                             ?>
                             <tr>
-                                <td class="text-center">%d.</td>
-                                <td class="text-uppercase text-center">%s</td>
-                                <td class="text-center">%s</td>
-                                <td class="text-center">%s</td>
-                                <td class="text-center">%s</td>
+                                <td class="text-center" style="vertical-align:top"><?=$lbl_stt;?></td>
+                                <td class="text-uppercase text-center" style="padding: 0;">
+                                    <p style="<?=$stylex;?>"><?=$product_title;?></p>
+                                    <p style="width: 100%;padding: 10px;text-transform: initial;"><?=$product_excerpt;?></p>
+                                </td>
+                                <td class="text-center" style="width: 113px;text-align: center !important;"><?=$strSL;?></td>
                             </tr>
                     <?php
+
+
+                            $tbl_r++;
                         }
                     }
                     ?>

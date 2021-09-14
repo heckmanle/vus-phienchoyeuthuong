@@ -150,7 +150,7 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
 
                     $dataList[$r] = array($stt, $item["name"], "'".$item["phone"], $item["email"], $trangthai, $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, $item['your_point'], $your_request, $your_comment);
                 }
-            
+
             $i++;
             $r ++;
             $stt ++;
