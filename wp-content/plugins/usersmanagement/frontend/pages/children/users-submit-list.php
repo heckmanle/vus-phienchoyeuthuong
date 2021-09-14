@@ -71,7 +71,7 @@ $userlist = \SME\Includes\Core\User::users();
                                     ?>
 
                                     <tr>
-                                        <td class="cb"><input type="checkbox" class="check-row" name="uid[]" value="<?php echo $item['id']; ?>"></td>
+                                        <td class="cb"><input type="checkbox" class="check-row" name="uid[]" value="<?php echo $item['id']; ?>"><?php echo $i;?></td>
                                         <td>
                                             <a href="<?php echo add_query_arg(['view' => 'profile', 'uid' => $item['id']], $link); ?>">
                                                 <div class="widget-content p-0">
@@ -114,11 +114,21 @@ $userlist = \SME\Includes\Core\User::users();
                                         <td><?= date("d/m/Y", ceil($item["registered"] / 1000) );?></td>
                                         <td>
                                             <?php
-                                            $statusName="Người dùng mới";
-                                            if($item["status"] == "verified") {
-                                                $statusName="Đang hoạt động";
+//                                            $statusName="Người dùng mới";
+//                                            if($item["status"] == "verified") {
+//                                                $statusName="Đang hoạt động";
+//                                            } else {
+//                                                $statusName="Ngưng hoạt động";
+//                                            }
+//                                            echo $statusName;
+
+                                            $statusName="";
+                                            if($item["note"] == "SUBMITTED") {
+                                                $statusName="Đang xử lý";
                                             } else {
-                                                $statusName="Ngưng hoạt động";
+                                                if($item["note"] == "DONE") {
+                                                    $statusName = "DONE";
+                                                }
                                             }
                                             echo $statusName;
                                             ?>
