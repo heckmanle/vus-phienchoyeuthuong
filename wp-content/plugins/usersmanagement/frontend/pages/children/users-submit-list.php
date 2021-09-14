@@ -10,11 +10,13 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
 
     // select users list
     $dataList=array();
-    if(!empty($userlist)){ $i=0;
-    foreach ($userlist as $item) {
-        if ($i != 0) {
-            if ($item['your_point'] != "") {
-                $dataList[] = array($item["name"], $item["phone"], $item['your_point']);
+    if(!empty($userlist)) {
+        $i = 0;
+        foreach ($userlist as $item) {
+            if ($i != 0) {
+                if ($item['your_point'] != "") {
+                    $dataList[] = array($item["name"], $item["phone"], $item['your_point']);
+                }
             }
         }
     }
