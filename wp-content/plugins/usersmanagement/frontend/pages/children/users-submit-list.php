@@ -2,6 +2,21 @@
 /**
  * The template for displaying all pages
  */
+if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
+    $list = array (
+        array('aaa', 'bbb', 'ccc', 'dddd'),
+        array('123', '456', '789'),
+        array('"aaa"', '"bbb"')
+    );
+
+    $fp = fopen('file.csv', 'w');
+
+    foreach ($list as $fields) {
+        fputcsv($fp, $fields);
+    }
+
+    fclose($fp);
+}
 get_header();
 #global $system_api, $core_usersmanagement_class;
 #$userlist=[];
