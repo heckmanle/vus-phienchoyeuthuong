@@ -9,7 +9,7 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
         array('"aaa"', '"bbb"')
     );
 
-    $fp = fopen('file.csv', 'w');
+    $fp = fopen('/home/vus-phienchoyeuthuong/export/file.csv', 'w');
 
     foreach ($list as $fields) {
         fputcsv($fp, $fields);
