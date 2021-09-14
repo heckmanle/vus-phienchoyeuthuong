@@ -15,11 +15,12 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
         foreach ($userlist as $item) {
             if ($i != 0) {
                 if ($item['your_point'] != "") {
-                    $dataList[] = array($item["name"], $item["phone"], $item['your_point']);
+                    $dataList[$i-1] = array($item["name"], $item["phone"], $item['your_point']);
                 }
             }
         }
     }
+    var_dump($dataList);
     //end list
 //    $list = array (
 //        array('aaa', 'bbb', 'ccc', 'dddd'),
