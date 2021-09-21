@@ -244,7 +244,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                     <p class="text-center mb-4"><?php _e('Bạn đang cần hỗ trợ'); ?>:</p>
                     <div class="form-group">
                         <label><?php _e('Combo thực phẩm'); ?></label>
-                        <textarea id="step-1-note-0" class="form-control"><?php _e("Thông tin nhận Combo thực phẩm:\nHọ tên: \nĐịa chỉ nhận hàng: "); ?></textarea>
+                        <textarea id="step-1-note-0" class="form-control"><?php _e("Thông tin nhận Combo thực phẩm:\nHọ tên: \n Địa chỉ nhận hàng: "); ?></textarea>
                     </div>
 
                     <div class="form-group">
@@ -376,6 +376,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
             info = info.replace("Vui lòng điền đầy đủ thông tin\n", '');
             info += "\n";
             info += $('#step-1-note-2').val();
+            info += "\n";
             info += $('#step-1-note-0').val();
             info = _nl2br(info);
             $('#modal-step-2 .step2-info').html(info);
