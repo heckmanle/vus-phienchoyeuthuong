@@ -7633,7 +7633,8 @@ function _ajax_ttht_booking($data, $ajax){
     $your_comment = nl2br($your_comment);
     $your_request = site_sanitize_output($your_request);
 	$your_comment = site_sanitize_output($your_comment);
-	$note = 'SUBMITTED';
+	//$note = 'SUBMITTED';
+    $note = '';
     $compact = compact( 'your_point', 'your_comment', 'your_request', 'your_submit', 'zone', 'note');
     $response = \DIVI\Includes\Core\User::update_user($id, $compact);
 
