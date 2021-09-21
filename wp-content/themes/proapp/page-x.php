@@ -376,6 +376,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
             info = info.replace("Vui lòng điền đầy đủ thông tin\n", '');
             info += "\n";
             info += $('#step-1-note-2').val();
+            info += $('#step-1-note-0').val();
             info = _nl2br(info);
             $('#modal-step-2 .step2-info').html(info);
             $('#modal-step-2 .notification').html('').addClass('d-none');

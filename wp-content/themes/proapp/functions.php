@@ -7627,15 +7627,13 @@ function _ajax_ttht_booking($data, $ajax){
 		$zone = '';
     }
 	$your_point = (string)$your_point;
-	$your_request = $note_1 . "<br>" . $note_2;
+	$your_request = $note_0 . "<br>" . $note_1 . "<br>" . $note_2;
     $id = $currentUser['id'];
     $your_request = nl2br($your_request);
     $your_comment = nl2br($your_comment);
     $your_request = site_sanitize_output($your_request);
 	$your_comment = site_sanitize_output($your_comment);
-	//$note = 'SUBMITTED';
-    $note = $note_0;
-    //$department = $note_0;
+	$note = 'SUBMITTED';
     $compact = compact( 'your_point', 'your_comment', 'your_request', 'your_submit', 'zone', 'note');
     $response = \DIVI\Includes\Core\User::update_user($id, $compact);
 

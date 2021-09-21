@@ -28,11 +28,6 @@ class User
 			'note',
 			'status',
 		],
-        'your_point',
-        'your_comment',
-        'your_submit',
-        'your_request',
-        'zone',
 		'status',
 		'last_login'
 	];
@@ -370,7 +365,6 @@ class User
 	public static function update_user($user_id, $data){
 		global $system_api;
 		$data['id'] = $user_id;
-		//var_dump($user_id);die();
 		$response = $system_api->re_query('POST', "updateUser", [
 			'params' => $data,
 			'fields' => self::$field_default,
