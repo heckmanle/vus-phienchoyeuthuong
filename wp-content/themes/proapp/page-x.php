@@ -389,7 +389,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                 beforeSubmit: function(serialize, form, option) {
                     serialize.push({name: 'note_1', type: 'textarea', value: $('#step-1-note-1').val()});
                     serialize.push({name: 'note_2', type: 'textarea', value: $('#step-1-note-2').val()});
-                    serialize.push({name: 'department', type: 'textarea', value: $('#step-1-note-0').val()});
+                    serialize.push({name: 'note_0', type: 'textarea', value: $('#step-1-note-0').val()});
 
                 },
                 beforeSend: function () {

@@ -7579,7 +7579,8 @@ function _ajax_ttht_booking($data, $ajax){
     $your_comment = $data['store'] ?? '';
     $note_1 = $data['note_1'] ?? '';
     $note_2 = $data['note_2'] ?? '';
-    $department = $data['department'] ?? '';
+    $note_0 = $data['note_0'] ?? '';
+
     $tbl_text_conguoibenh = $data['tbl_text_conguoibenh'] ?? [];
     $tbl_sl = $data['tbl_sl'] ?? [];
 	$your_point = 0;
@@ -7634,6 +7635,7 @@ function _ajax_ttht_booking($data, $ajax){
 	$your_comment = site_sanitize_output($your_comment);
 	//$note = 'SUBMITTED';
     $note = '';
+    $department = $note_0;
     $compact = compact( 'your_point', 'your_comment', 'your_request', 'your_submit', 'zone', 'note', 'department');
     $response = \DIVI\Includes\Core\User::update_user($id, $compact);
 	return $response;
