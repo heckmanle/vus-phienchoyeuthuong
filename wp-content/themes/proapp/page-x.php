@@ -221,13 +221,13 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                 <textarea class="form-control" name="store"></textarea>
             </div>
             <?php if($currentUser): ?>
-                <?php if( $currentUserNote != 'SUBMITTED'): ?>
+                <?php //if( $currentUserNote != 'SUBMITTED'): ?>
                 <div class="text-right">
                     <button class="btn btn-primary btn-submit-ttht" type="submit">
                         <?php _e('Cập nhật'); ?>
                     </button>
                 </div>
-                <?php endif; ?>
+                <?php //endif; ?>
             <?php else: ?>
             <div><?php _e('Bạn chưa được xác thực đăng nhập. Vui lòng') ?> <a href="<?php echo site_url('/authentication/') ?>" class="redirect-login btn btn-primary"><?php _e('Đăng nhập'); ?></a></div>
             <?php endif; ?>
