@@ -33,10 +33,10 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
         $tc_9 = "Có F0 trong gia đình đang sống chung";
 
         $r = 0;
-        $dataList[$r] = array("","", "", "", "", "Có người phụ thuộc", "", "Tình trạng nơi ở ","","Có con nhỏ","", "Mắc bênh khác (không phải Covid)","", "Nhiễm Covid", " Tổng Điểm", "Thông tin của tôi", "Câu chuyện chia sẻ");
+        $dataList[$r] = array("","","", "", "", "", "Có người phụ thuộc", "", "Tình trạng nơi ở ","","Có con nhỏ","", "Mắc bênh khác (không phải Covid)","", "Nhiễm Covid", " Tổng Điểm", "Thông tin của tôi", "Lương Thực", "Câu chuyện chia sẻ");
 
         $r = 1;
-        $dataList[$r] = array("STT","Tên", "Điện thoại", "Email", "Tình trạng", $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, " Tổng Điểm", "Thông tin ghi số tài khoản / khác");
+        $dataList[$r] = array("STT","Ngày đăng ký", "Tên", "Điện thoại", "Email", "Tình trạng", $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, " Tổng Điểm", "Thông tin ghi số tài khoản / khác");
 
         $r = 2;
         foreach ($userlistSubmit as $item) {
@@ -143,12 +143,26 @@ if(isset($_GET['exportdata']) && $_GET['exportdata'] == "yes") {
                     }
 
 
-                    $your_request = str_replace("<br />", "\n", $item['your_request']);
+                    //$your_request = str_replace("<br />", "\n", $item['your_request']);
+                    //$your_request = str_replace("<br>", "\n", $your_request);
+
+                    // split add LThuc
+                    $arrYourComment = "";
+                    if($item['your_request'] != "") {
+                        //Thông tin nhận Combo thực phẩm:
+                        $arrYourRequest = explode("Vui lòng điền đầy đủ thông tin", $item['your_request']);
+
+                    }
+                    $your_request_combo = str_replace("<br />", "\n", $arrYourRequest[0]);
+                    $your_request_combo = str_replace("<br>", "\n", $your_request_combo);
+
+                    $your_request = str_replace("<br />", "\n", $arrYourRequest[1]);
                     $your_request = str_replace("<br>", "\n", $your_request);
 
+                    $date_submit = $item['birthdate'];
                     $your_comment = str_replace("<br />", "\n", $item['your_comment']);
 
-                    $dataList[$r] = array($stt, $item["name"], "'".$item["phone"], $item["email"], $trangthai, $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, $item['your_point'], $your_request, $your_comment);
+                    $dataList[$r] = array($stt, $date_submit, $item["name"], "'".$item["phone"], $item["email"], $trangthai, $tc_1, $tc_2, $tc_3,$tc_4,$tc_5,$tc_6, $tc_7,$tc_8,$tc_9, $item['your_point'], $your_request, $your_request_combo, $your_comment);
                 }
 
             $i++;
@@ -277,7 +291,9 @@ get_header();
                                         <td><?=$item["phone"]?></td>
                                         <td><?=$item["email"]?></td>
                                         <td><?= $item["address"]?></td>
-                                        <td><?= date("d/m/Y", ceil($item["registered"] / 1000) );?></td>
+<!--                                        <td>--><?//= date("d/m/Y", ceil($item["registered"] / 1000) );?><!--</td>-->
+                                        <td><?= $item["birthdate"]?></td>
+
                                         <td>
                                             <?php
 //                                            $statusName="Người dùng mới";

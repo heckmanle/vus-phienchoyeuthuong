@@ -29,7 +29,8 @@ class User
 			'status',
 		],
 		'status',
-		'last_login'
+		'last_login',
+        'registered'
 	];
 	public static function check_account($username){
 		global $system_api;
@@ -89,6 +90,7 @@ class User
 				'note',
 				'status',
                 'department',
+                'registered',
 			]
 		], true);
 		if( is_wp_error($response) ){
